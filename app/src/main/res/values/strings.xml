@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Natakar</string>
+    <string name="title_activity_activity_logout">Odjava</string>
+    <string name="title_activity_activity_login">Prijava</string>
+    <string name="title_activity_activity_mize">Mize</string>
+    <string name="title_activity_activity_narocila">Narocila</string>
+    <!-- Sign-in status messages -->
+    <string name="signed_in_fmt">Prijavljeni kot: %s</string>
+    <string name="signed_out">Odjavljeni</string>
+    <string name="loading">Loading…</string>
+    <string name="title_activity_activity_4__meniji">Meniji</string>
+    <string name="delete_narocilo">Izbrisi</string>
+</resources>

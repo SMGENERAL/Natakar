@@ -1,0 +1,113 @@
+package com.example;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by SPACE MARINE GENERAL on 19.3.2016.
+ */
+public class Meni {
+    private String Ime;
+    private ArrayList<Hrana> SeznamHrane;
+    private ArrayList<Pijaca> SeznamPijace;
+    private Double Cena;
+    private boolean Oznacen;
+
+    public Meni(String ime, ArrayList<Hrana> seznamHrane, ArrayList<Pijaca> seznamPijace) {
+        Ime = ime;
+        SeznamHrane = seznamHrane;
+        SeznamPijace = seznamPijace;
+        izracunajCeno();
+        this.setOznacen(false);
+    }
+
+    public Meni() {
+        this.SeznamHrane=new ArrayList();
+        this.SeznamPijace=new ArrayList();
+        this.setOznacen(false);
+    }
+
+    public String getIme() {
+        return Ime;
+    }
+
+    public void setIme(String ime) {
+        Ime = ime;
+    }
+
+    public List<Hrana> getSeznamHrane() {
+        return SeznamHrane;
+    }
+
+    public void setSeznamHrane(ArrayList<Hrana> seznamHrane) {
+        SeznamHrane = seznamHrane;
+        izracunajCeno();
+    }
+
+    public List<Pijaca> getSeznamPijace() {
+        return SeznamPijace;
+    }
+
+    public void setSeznamPijace(ArrayList<Pijaca> seznamPijace) {
+        SeznamPijace = seznamPijace;
+        izracunajCeno();
+    }
+
+    public Double getCena() {
+        izracunajCeno();
+        return Cena;
+    }
+
+    public void setCena(Double cena) {
+        Cena = cena;
+    }
+
+    public void dodajHrano(Hrana nova) {
+        SeznamHrane.add(nova);
+        izracunajCeno();
+    }
+
+    public void izbrisiHrano(int index) {
+        SeznamHrane.remove(index);
+        izracunajCeno();
+    }
+
+    public void dodajPijaco(Pijaca nova) {
+        SeznamPijace.add(nova);
+        izracunajCeno();
+    }
+
+    public void izbrisiPijaco(int index) {
+        SeznamPijace.remove(index);
+        izracunajCeno();
+    }
+
+    public void izracunajCeno() {
+        this.Cena=0.0;
+        for (int i = 0; i < SeznamHrane.size(); i++) {
+            this.Cena=this.Cena+SeznamHrane.get(i).getCena();
+        }
+        for (int i = 0; i < SeznamPijace.size(); i++) {
+            this.Cena=this.Cena+SeznamPijace.get(i).getCena();
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Meni{" +
+                "Ime='" + Ime + '\'' +
+                ", SeznamHrane=" + SeznamHrane +
+                ", SeznamPijace=" + SeznamPijace +
+                ", Cena=" + Cena +
+                ", Oznacen=" + Oznacen +
+                '}';
+    }
+
+    public boolean isOznacen() {
+        return Oznacen;
+    }
+
+    public void setOznacen(boolean oznacen) {
+        Oznacen = oznacen;
+    }
+}

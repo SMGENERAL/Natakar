@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Activity_3_Narocila">
+
+    <item android:id="@+id/delete_narocilo"
+        android:title="@string/delete_narocilo"
+        android:icon="@drawable/kosbel"
+        android:orderInCategory="300"
+        app:showAsAction="ifRoom" />
+</menu>

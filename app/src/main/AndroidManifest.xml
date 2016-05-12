@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zigabincl.com.natakar">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".Podatki"
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="HardcodedDebugMode">
+        <activity
+            android:name=".Activity_1_Login"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity_2_Mize"
+            android:label="@string/title_activity_activity_mize"
+            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Activity_1_Login">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zigabincl.com.natakar.Activity_1_Login" />
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".Activity_3_Narocila"
+            android:label="@string/title_activity_activity_narocila"
+            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Activity_2_Mize">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zigabincl.com.natakar.Activity_2_Mize" />
+        </activity>
+        <activity
+            android:name=".Activity_4_Meniji"
+            android:label="@string/title_activity_activity_4__meniji"
+            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Activity_3_Narocila">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zigabincl.com.natakar.Activity_3_Narocila" />
+        </activity>
+    </application>
+
+</manifest>
