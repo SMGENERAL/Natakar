@@ -10,7 +10,6 @@ public class Narocilo {
     private String Ime;
     private ArrayList<Meni> SeznamMenijev;
     private Double SkupnaCena;
-    private int zaizbris;
 
     public Narocilo(String ime, ArrayList<Meni> seznamMenijev) {
         Ime = ime;
