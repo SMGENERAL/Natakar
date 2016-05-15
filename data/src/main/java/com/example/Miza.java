@@ -7,31 +7,30 @@ import java.util.ArrayList;
  */
 public class Miza {
     private String ime;
-    private ArrayList<Narocilo> SeznamNarocil;
+    private ArrayList<Meni> SeznamMenijev;
     private Double SkupnaCena;
 
     public Miza() {
-        this.SeznamNarocil=new ArrayList<Narocilo>();
+        this.ime="Ni imena";
+        this.SeznamMenijev=new ArrayList<Meni>();
         this.SkupnaCena=0.0;
     }
 
-    public Miza(String ime, ArrayList<Narocilo> seznamNarocil) {
+    public Miza(String ime, ArrayList<Meni> seznamMenijev) {
         this.ime = ime;
-        SeznamNarocil = seznamNarocil;
+        this.SeznamMenijev = seznamMenijev;
         izracunajSkupnoCeno();
     }
     public Miza(String ime) {
         this.ime = ime;
-        this.SeznamNarocil=new ArrayList<Narocilo>();
-        izracunajSkupnoCeno();
+        this.SeznamMenijev=new ArrayList<Meni>();
+        this.SkupnaCena=0.0;
     }
-
-    public ArrayList<Narocilo> getSeznamNarocil() {
-        return SeznamNarocil;
-    }
-
-    public void setSeznamNarocil(ArrayList<Narocilo> seznamNarocil) {
-        SeznamNarocil = seznamNarocil;
+    public void izracunajSkupnoCeno() {
+        this.SkupnaCena=0.0;
+        for (int i = 0; i < SeznamMenijev.size(); i++) {
+            this.SkupnaCena = this.SkupnaCena + SeznamMenijev.get(i).getCena();
+        }
     }
 
     public String getIme() {
@@ -42,28 +41,13 @@ public class Miza {
         this.ime = ime;
     }
 
-    public void dodajNarocilo(Narocilo nov) {
-        SeznamNarocil.add(nov);
-        izracunajSkupnoCeno();
-    }
-    public void izbrisiNarocilo(int index) {
-        SeznamNarocil.remove(index);
-        izracunajSkupnoCeno();
-    }
-    public void izracunajSkupnoCeno() {
-        this.SkupnaCena=0.0;
-        for (int i = 0; i < SeznamNarocil.size(); i++) {
-            this.SkupnaCena = this.SkupnaCena + SeznamNarocil.get(i).getSkupnaCena();
-        }
+    public ArrayList<Meni> getSeznamMenijev() {
+        return SeznamMenijev;
     }
 
-    @Override
-    public String toString() {
-        return "Miza{" +
-                "ime='" + ime + '\'' +
-                ", SeznamNarocil=" + SeznamNarocil +
-                ", SkupnaCena=" + SkupnaCena +
-                '}';
+    public void setSeznamMenijev(ArrayList<Meni> seznamMenijev) {
+        SeznamMenijev = seznamMenijev;
+        this.izracunajSkupnoCeno();
     }
 
     public Double getSkupnaCena() {
@@ -72,5 +56,14 @@ public class Miza {
 
     public void setSkupnaCena(Double skupnaCena) {
         SkupnaCena = skupnaCena;
+    }
+
+    @Override
+    public String toString() {
+        return "Miza{" +
+                "ime='" + ime + '\'' +
+                ", SeznamMenijev=" + SeznamMenijev +
+                ", SkupnaCena=" + SkupnaCena +
+                '}';
     }
 }

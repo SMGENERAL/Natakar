@@ -2,7 +2,6 @@ package com.zigabincl.com.natakar;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +13,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.DataAll;
-import com.example.Narocilo;
 
 import java.util.ArrayList;
 /**

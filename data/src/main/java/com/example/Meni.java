@@ -12,6 +12,7 @@ public class Meni {
     private ArrayList<Pijaca> SeznamPijace;
     private Double Cena;
     private boolean Oznacen;
+    private int Kolicina;
 
     public Meni(String ime, ArrayList<Hrana> seznamHrane, ArrayList<Pijaca> seznamPijace) {
         Ime = ime;
@@ -19,12 +20,23 @@ public class Meni {
         SeznamPijace = seznamPijace;
         izracunajCeno();
         this.setOznacen(false);
+        this.Kolicina=1;
+    }
+
+    public Meni(String ime) {
+        Ime = ime;
+        this.SeznamHrane=new ArrayList();
+        this.SeznamPijace=new ArrayList();
+        this.Cena=0.0;
+        this.setOznacen(false);
     }
 
     public Meni() {
         this.SeznamHrane=new ArrayList();
         this.SeznamPijace=new ArrayList();
+        this.Cena=0.0;
         this.setOznacen(false);
+        this.Kolicina=1;
     }
 
     public String getIme() {
@@ -54,32 +66,11 @@ public class Meni {
     }
 
     public Double getCena() {
-        izracunajCeno();
         return Cena;
     }
 
     public void setCena(Double cena) {
         Cena = cena;
-    }
-
-    public void dodajHrano(Hrana nova) {
-        SeznamHrane.add(nova);
-        izracunajCeno();
-    }
-
-    public void izbrisiHrano(int index) {
-        SeznamHrane.remove(index);
-        izracunajCeno();
-    }
-
-    public void dodajPijaco(Pijaca nova) {
-        SeznamPijace.add(nova);
-        izracunajCeno();
-    }
-
-    public void izbrisiPijaco(int index) {
-        SeznamPijace.remove(index);
-        izracunajCeno();
     }
 
     public void izracunajCeno() {
@@ -92,6 +83,22 @@ public class Meni {
         }
     }
 
+    public boolean isOznacen() {
+        return Oznacen;
+    }
+
+    public void setOznacen(boolean oznacen) {
+        Oznacen = oznacen;
+    }
+
+    public int getKolicina() {
+        return Kolicina;
+    }
+
+    public void setKolicina(int kolicina) {
+        Kolicina = kolicina;
+    }
+
     @Override
     public String toString() {
         return "Meni{" +
@@ -100,14 +107,7 @@ public class Meni {
                 ", SeznamPijace=" + SeznamPijace +
                 ", Cena=" + Cena +
                 ", Oznacen=" + Oznacen +
+                ", Kolicina=" + Kolicina +
                 '}';
-    }
-
-    public boolean isOznacen() {
-        return Oznacen;
-    }
-
-    public void setOznacen(boolean oznacen) {
-        Oznacen = oznacen;
     }
 }

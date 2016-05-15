@@ -8,27 +8,25 @@ import java.util.List;
  */
 public class Hrana {
     private String Ime;
-    private ArrayList<String> SeznamSestavine;
+    private ArrayList<String> SeznamSestavin;
     private Double Cena;
-    private String Vrsta;
-
-    public Hrana(String ime, ArrayList<String> sestavine, Double cena, String vrsta) {
-        Ime = ime;
-        this.SeznamSestavine=new ArrayList<String>();
-        this.SeznamSestavine.addAll(sestavine);
-        //SeznamSestavine = sestavine;
-        Cena = cena;
-        Vrsta = vrsta;
-    }
-    public Hrana(String ime, Double cena, String vrsta) {
-        Ime = ime;
-        this.SeznamSestavine=new ArrayList<String>();
-        Cena = cena;
-        Vrsta = vrsta;
-    }
 
     public Hrana() {
-        this.SeznamSestavine=new ArrayList<String>();
+        this.Ime="Ni imena";
+        this.SeznamSestavin=new ArrayList<String>();
+        this.Cena=0.0;
+    }
+
+    public Hrana(String ime, ArrayList<String> sestavine, Double cena) {
+        Ime = ime;
+        this.SeznamSestavin=new ArrayList<String>();
+        this.SeznamSestavin=sestavine;
+        Cena = cena;
+    }
+    public Hrana(String ime, Double cena) {
+        Ime = ime;
+        this.SeznamSestavin=new ArrayList<String>();
+        Cena = cena;
     }
 
     public String getIme() {
@@ -39,12 +37,12 @@ public class Hrana {
         Ime = ime;
     }
 
-    public List<String> getSestavine() {
-        return SeznamSestavine;
+    public ArrayList<String> getSeznamSestavin() {
+        return SeznamSestavin;
     }
 
-    public void setSestavine(ArrayList<String> sestavine) {
-        SeznamSestavine = sestavine;
+    public void setSeznamSestavin(ArrayList<String> seznamSestavin) {
+        SeznamSestavin = seznamSestavin;
     }
 
     public Double getCena() {
@@ -55,29 +53,12 @@ public class Hrana {
         Cena = cena;
     }
 
-    public String getVrsta() {
-        return Vrsta;
-    }
-
-    public void setVrsta(String vrsta) {
-        Vrsta = vrsta;
-    }
-
-    public void dodajSestavino(String nova) {
-        SeznamSestavine.add(nova);
-    }
-
-    public void izbrisiSestavino(int index) {
-        SeznamSestavine.remove(index);
-    }
-
     @Override
     public String toString() {
         return "Hrana{" +
                 "Ime='" + Ime + '\'' +
-                ", Sestavine=" + SeznamSestavine +
+                ", SeznamSestavin=" + SeznamSestavin +
                 ", Cena=" + Cena +
-                ", Vrsta='" + Vrsta + '\'' +
                 '}';
     }
 }

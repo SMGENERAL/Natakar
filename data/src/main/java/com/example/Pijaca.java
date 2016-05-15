@@ -6,15 +6,15 @@ package com.example;
 public class Pijaca {
     private String Ime;
     private Double Cena;
-    private String vrsta;
 
-    public Pijaca(String ime, Double cena, String vrsta) {
+    public Pijaca(String ime, Double cena) {
         Ime = ime;
         Cena = cena;
-        this.vrsta = vrsta;
     }
 
     public Pijaca() {
+        this.Ime="Ni imena";
+        this.Cena=0.0;
     }
 
     public String getIme() {
@@ -33,20 +33,11 @@ public class Pijaca {
         Cena = cena;
     }
 
-    public String getVrsta() {
-        return vrsta;
-    }
-
-    public void setVrsta(String vrsta) {
-        this.vrsta = vrsta;
-    }
-
     @Override
     public String toString() {
         return "Pijaca{" +
                 "Ime='" + Ime + '\'' +
                 ", Cena=" + Cena +
-                ", vrsta='" + vrsta + '\'' +
                 '}';
     }
 }
