@@ -51,6 +51,7 @@ public class Miza {
     }
 
     public Double getSkupnaCena() {
+        izracunajSkupnoCeno();
         return SkupnaCena;
     }
 

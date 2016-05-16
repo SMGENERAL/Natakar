@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Activity_3_Narocila"
+    tools:context=".Activity_3_Meniji"
     tools:showIn="@layout/layout_activity_3"
     android:background="@android:color/holo_blue_dark">
 

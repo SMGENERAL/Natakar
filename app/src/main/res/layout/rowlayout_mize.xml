@@ -39,8 +39,8 @@
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/icon"
             android:layout_toEndOf="@+id/icon"
-            android:layout_marginLeft="29dp"
-            android:layout_marginStart="29dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="5dp" />
 
         <TextView
@@ -50,22 +50,11 @@
             android:text="Naročila: 0"
             android:id="@+id/txtHranaNarocilo"
             android:textColor="#000000"
-            android:layout_alignLeft="@+id/txtNaslov"
-            android:layout_alignStart="@+id/txtNaslov"
-            android:layout_below="@+id/txtCena" />
+            android:layout_alignTop="@+id/txtNaslov"
+            android:layout_toEndOf="@+id/txtNaslov"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="2dp" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Status: Prazna"
-        android:id="@+id/txtStatus"
-        android:textColor="#000000"
-        android:layout_below="@+id/txtCena"
-        android:layout_toLeftOf="@+id/txtCena"
-        android:layout_toStartOf="@+id/txtCena"
-        android:layout_marginRight="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,9 +64,19 @@
         android:id="@+id/txtCena"
         android:layout_marginRight="30dp"
         android:layout_marginEnd="10dp"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/white"
         android:layout_alignTop="@+id/txtNaslov"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="SeznamMenijev"
+        android:id="@+id/txtMeniji"
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/txtNaslov"
+        android:layout_alignStart="@+id/txtNaslov" />
 
 </RelativeLayout>
 </RelativeLayout>

@@ -1,10 +1,13 @@
 package com.zigabincl.com.natakar;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.DataAll;
+import com.example.Hrana;
 import com.example.Miza;
 
 import java.util.ArrayList;
@@ -34,7 +38,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         public TextView txtNaslov;
         public TextView txtNarocilo;
         public TextView txtCena;
-        public TextView txtStatus;
+        public TextView txtMeniji;
         public RelativeLayout elementVrste;
         public ImageView iv;
 
@@ -42,7 +46,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
             super(v);
             txtNaslov = (TextView) v.findViewById(R.id.txtNaslov);
             txtCena = (TextView) v.findViewById(R.id.txtCena);
-            txtStatus = (TextView) v.findViewById(R.id.txtStatus);
+            txtMeniji = (TextView) v.findViewById(R.id.txtMeniji);
             txtNarocilo = (TextView) v.findViewById(R.id.txtHranaNarocilo);
             elementVrste = (RelativeLayout) v.findViewById(R.id.elementVrste);
             iv = (ImageView)v.findViewById(R.id.icon);
@@ -67,34 +71,73 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int positionMiza) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
-        ArrayList<Miza> trenutni = (ArrayList<Miza>) mDataset.getSeznamVsehMiz();
-        holder.txtNaslov.setText(trenutni.get(positionMiza).getIme());
-        holder.txtCena.setText(String.format("%.2f", trenutni.get(positionMiza).getSkupnaCena())+" €");
-        int velikost=trenutni.get(positionMiza).getSeznamNarocil().size();
+    public void onBindViewHolder(final ViewHolder holder, final int positionMiza) {
+        holder.txtNaslov.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getIme());
+        holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSkupnaCena())+" €");
+        final int velikost=mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().size();
         holder.txtNarocilo.setText("Narocila: "+velikost);
         if (velikost>0)
         {
-            holder.txtStatus.setText("Zasedena");
             holder.elementVrste.setBackgroundColor(Color.rgb(255,180,180));
         }
         else
         {
-            holder.txtStatus.setText("Prosta");
             holder.elementVrste.setBackgroundColor(Color.rgb(180,255,180));
         }
+
+        String menijiText="";
+        for (int i = 0; i < mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().size(); i++) {
+            menijiText+=mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x ";
+            menijiText+=mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getIme()+"\n";
+        }
+        holder.txtMeniji.setText(menijiText);
+
         holder.iv.setImageDrawable(this.  ac.getDrawable(R.drawable.miza));
 
         //klik na element
         holder.elementVrste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent drugoOkno = new Intent(ac, Activity_3_Narocila.class);
-                //drugoOkno.putExtra(PARAMETER_POSITION_1,position);
+                Intent drugoOkno = new Intent(ac, Activity_3_Meniji.class);
                 drugoOkno.putExtra("POSITION_MIZA",positionMiza);
                 ac.startActivity(drugoOkno);
+            }
+        });
+
+        holder.elementVrste.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(final View v) {
+                if(velikost>0)
+                {
+                    new AlertDialog.Builder(v.getContext())
+                            .setTitle("Potrditev?")
+                            .setMessage("Ali želite potrditi izbrano naročilo?")
+                            .setPositiveButton("Potrdi", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().clear();
+                                    //natisni račun
+                                    ac.finish();
+                                    ac.startActivity(ac.getIntent());
+                                }
+                            })
+                            .setNegativeButton("Izbriši", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().clear();
+                                    ac.finish();
+                                    ac.startActivity(ac.getIntent());
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+                else
+                {
+                    Snackbar snackbar = Snackbar
+                            .make(v, "Izbrali ste prazno mizo.", Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }
+
+                return true;
             }
         });
     }

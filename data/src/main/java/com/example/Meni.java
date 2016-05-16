@@ -29,6 +29,7 @@ public class Meni {
         this.SeznamPijace=new ArrayList();
         this.Cena=0.0;
         this.setOznacen(false);
+        this.Kolicina=1;
     }
 
     public Meni() {
@@ -66,6 +67,7 @@ public class Meni {
     }
 
     public Double getCena() {
+        izracunajCeno();
         return Cena;
     }
 
@@ -81,6 +83,7 @@ public class Meni {
         for (int i = 0; i < SeznamPijace.size(); i++) {
             this.Cena=this.Cena+SeznamPijace.get(i).getCena();
         }
+        this.Cena=this.Cena*this.Kolicina;
     }
 
     public boolean isOznacen() {
@@ -97,6 +100,7 @@ public class Meni {
 
     public void setKolicina(int kolicina) {
         Kolicina = kolicina;
+        izracunajCeno();
     }
 
     @Override

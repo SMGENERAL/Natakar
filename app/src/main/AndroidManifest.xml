@@ -39,22 +39,13 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".Activity_3_Narocila"
-            android:label="@string/title_activity_activity_narocila"
-            android:theme="@style/AppTheme.NoActionBar">
-            android:parentActivityName=".Activity_2_Mize">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.zigabincl.com.natakar.Activity_2_Mize" />
-        </activity>
-        <activity
-            android:name=".Activity_4_Meniji"
+            android:name=".Activity_3_Meniji"
             android:label="@string/title_activity_activity_4__meniji"
             android:theme="@style/AppTheme.NoActionBar">
             android:parentActivityName=".Activity_3_Narocila">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.zigabincl.com.natakar.Activity_3_Narocila" />
+                android:value="com.zigabincl.com.natakar.Activity_2_Mize" />
         </activity>
     </application>
 
