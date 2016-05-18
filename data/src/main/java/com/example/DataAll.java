@@ -128,7 +128,6 @@ public class DataAll {
         vsipodatki.getSeznamVsehMenijev().add(new Meni("M4"));
         vsipodatki.getSeznamVsehMenijev().get(3).getSeznamHrane().add(vsipodatki.getSeznamVseHrane().get(4));
         vsipodatki.getSeznamVsehMenijev().get(3).getSeznamPijace().add(vsipodatki.getSeznamVsehPijac().get(4));
-        vsipodatki.getSeznamVsehMenijev().get(3).setKolicina(3);
 
         vsipodatki.getSeznamVsehMenijev().add(new Meni("M5"));
         vsipodatki.getSeznamVsehMenijev().get(4).getSeznamPijace().add(vsipodatki.getSeznamVsehPijac().get(0));
@@ -196,12 +195,12 @@ public class DataAll {
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 10"));
 
         //KOLICINE NAROCIL
-        vsipodatki.getSeznamVsehMiz().get(0).getSeznamMenijev().get(0).setKolicina(2);
-        vsipodatki.getSeznamVsehMiz().get(1).getSeznamMenijev().get(1).setKolicina(4);
-        vsipodatki.getSeznamVsehMiz().get(4).getSeznamMenijev().get(2).setKolicina(2);
-        vsipodatki.getSeznamVsehMiz().get(7).getSeznamMenijev().get(0).setKolicina(2);
-        vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().get(2).setKolicina(3);
-        vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().get(5).setKolicina(2);
+        //vsipodatki.getSeznamVsehMiz().get(0).getSeznamMenijev().get(0).setKolicina(2);
+        //vsipodatki.getSeznamVsehMiz().get(1).getSeznamMenijev().get(1).setKolicina(4);
+        //vsipodatki.getSeznamVsehMiz().get(4).getSeznamMenijev().get(2).setKolicina(2);
+        //vsipodatki.getSeznamVsehMiz().get(7).getSeznamMenijev().get(0).setKolicina(2);
+        //vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().get(2).setKolicina(3);
+        //vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().get(5).setKolicina(2);
 
         return vsipodatki;
     }
