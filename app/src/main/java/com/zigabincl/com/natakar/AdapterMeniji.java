@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -57,10 +58,10 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
         }
     }
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AdapterMeniji(DataAll myDataset, Activity ac, int pozicijaM) {
+    public AdapterMeniji(DataAll myDataset,DataAll kopija, Activity ac, int pozicijaM) {
         this.ac = ac;
         mDataset = myDataset;
-        backupDataset=myDataset;
+        backupDataset=kopija;
         positionMiza=pozicijaM;
 
         //klik na shrani naročilo
@@ -105,11 +106,11 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
         mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(false);
         holder.btnPlus.setEnabled(false);
         holder.btnMinus.setEnabled(false);
-        holder.elementVrste.setBackgroundColor(Color.rgb(255,180,180)); //svetlo rdeča
+        holder.elementVrste.setBackgroundColor(Color.rgb(100,200,255)); //modra
         for (int i = 0; i <mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().size() ; i++) {
             if(mDataset.getSeznamVsehMenijev().get(positionMeni).getIme()==mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getIme())
             {
-                holder.elementVrste.setBackgroundColor(Color.rgb(180,255,180)); //svetlo zelena
+                holder.elementVrste.setBackgroundColor(Color.rgb(120,255,120)); //zelena
                 mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(true);
                 holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getCena())+" €");
                 holder.txtKolicina.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
@@ -119,6 +120,14 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
         }
         //slika
         holder.iv.setImageDrawable(this.ac.getDrawable(R.drawable.meni));
+
+        //klik na sliko za activity hrane in pijače
+        holder.iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(ac.findViewById(holder.elementVrste.getId()), "Pojdi na podrobnosti menija "+(positionMeni+1), Snackbar.LENGTH_LONG).show();
+            }
+        });
 
         //izbira kolicine
         holder.btnPlus.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +179,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 if(mDataset.getSeznamVsehMenijev().get(positionMeni).isOznacen())
                 {
                     mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(false);
-                    holder.elementVrste.setBackgroundColor(Color.rgb(255,180,180)); //svetlo rdeča
+                    holder.elementVrste.setBackgroundColor(Color.rgb(100,200,255)); //modra
                     holder.btnPlus.setEnabled(false);
                     holder.btnMinus.setEnabled(false);
                     mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().remove(mDataset.getSeznamVsehMenijev().get(positionMeni));
@@ -178,7 +187,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 else
                 {
                     mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(true);
-                    holder.elementVrste.setBackgroundColor(Color.rgb(180,255,180)); //svetlo zelena
+                    holder.elementVrste.setBackgroundColor(Color.rgb(120,255,120)); //zelena
                     holder.btnPlus.setEnabled(true);
                     holder.btnMinus.setEnabled(true);
                     mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().add(mDataset.getSeznamVsehMenijev().get(positionMeni));
@@ -210,8 +219,6 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                         })
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
-
-
             }
         });
     }

@@ -78,11 +78,11 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         holder.txtNarocilo.setText("Narocila: "+velikost);
         if (velikost>0)
         {
-            holder.elementVrste.setBackgroundColor(Color.rgb(255,180,180));
+            holder.elementVrste.setBackgroundColor(Color.rgb(100,200,255)); //modra
         }
         else
         {
-            holder.elementVrste.setBackgroundColor(Color.rgb(180,255,180));
+            holder.elementVrste.setBackgroundColor(Color.rgb(120,255,120)); //zelena
         }
 
         String menijiText="";
@@ -111,7 +111,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
                 {
                     new AlertDialog.Builder(v.getContext())
                             .setTitle("Potrditev?")
-                            .setMessage("Ali želite potrditi izbrano naročilo?")
+                            .setMessage("Ali želite potrditi izbrano naročilo mize "+(positionMiza+1)+"?")
                             .setPositiveButton("Potrdi", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().clear();
@@ -120,7 +120,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
                                     ac.startActivity(ac.getIntent());
                                 }
                             })
-                            .setNegativeButton("Izbriši", new DialogInterface.OnClickListener() {
+                            .setNegativeButton("Počisti", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().clear();
                                     ac.finish();

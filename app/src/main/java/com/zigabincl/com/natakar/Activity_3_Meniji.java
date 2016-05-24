@@ -44,7 +44,7 @@ public class Activity_3_Meniji extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         // specify an adapter (see also next example)
-        mAdapter = new AdapterMeniji(app.getAll(), this, pozicijaMiza);
+        mAdapter = new AdapterMeniji(app.getAll(),app.getAll(), this, pozicijaMiza);
         mRecyclerView.setAdapter(mAdapter);
     }
     @Override
