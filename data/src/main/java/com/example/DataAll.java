@@ -8,13 +8,19 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class DataAll {
-
+   transient public boolean ch;
     private ArrayList<Miza> seznamVsehMiz;
     private ArrayList<Meni> seznamVsehMenijev;
     private ArrayList<Hrana> seznamVseHrane;
     private ArrayList<Pijaca> seznamVsehPijac;
-
+public void change(){
+    ch=true;
+}
+    public void saved(){
+        ch=false;
+    }
     public DataAll() {
+        ch=false;
         this.seznamVsehMiz=new ArrayList<Miza>();
         this.seznamVsehMenijev=new ArrayList<Meni>();
         this.seznamVseHrane=new ArrayList<Hrana>();
@@ -22,6 +28,7 @@ public class DataAll {
     }
 
     public DataAll(ArrayList<Miza> seznamVsehMiz, ArrayList<Meni> seznamVsehMenijev, ArrayList<Hrana> seznamVseHrane, ArrayList<Pijaca> seznamVsehPijac) {
+        ch=false;
         this.seznamVsehMiz = seznamVsehMiz;
         this.seznamVsehMenijev = seznamVsehMenijev;
         this.seznamVseHrane = seznamVseHrane;
@@ -193,14 +200,6 @@ public class DataAll {
         vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(9));
 
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 10"));
-
-        //KOLICINE NAROCIL
-        //vsipodatki.getSeznamVsehMiz().get(0).getSeznamMenijev().get(0).setKolicina(2);
-        //vsipodatki.getSeznamVsehMiz().get(1).getSeznamMenijev().get(1).setKolicina(4);
-        //vsipodatki.getSeznamVsehMiz().get(4).getSeznamMenijev().get(2).setKolicina(2);
-        //vsipodatki.getSeznamVsehMiz().get(7).getSeznamMenijev().get(0).setKolicina(2);
-        //vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().get(2).setKolicina(3);
-        //vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().get(5).setKolicina(2);
 
         return vsipodatki;
     }

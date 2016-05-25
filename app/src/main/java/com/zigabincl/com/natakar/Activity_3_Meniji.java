@@ -1,7 +1,9 @@
 package com.zigabincl.com.natakar;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +11,9 @@ import android.support.v7.widget.Toolbar;
 
 public class Activity_3_Meniji extends AppCompatActivity {
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private AdapterMeniji mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    Podatki app;
+    public Podatki app;
     public int pozicijaMiza;
 
     @Override
@@ -49,6 +51,28 @@ public class Activity_3_Meniji extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        if(app.getAll().ch) {
+
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Potrditev?")
+                    .setMessage("Ali želite shraniti naročilo?")
+                    .setPositiveButton("Shrani", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            app.save();
+                            app.getAll().saved();
+                           // onBackPressed();
+                        }
+                    })
+                    .setNegativeButton("Prekliči", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            app.load();
+                           // onBackPressed();
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        }
         Intent drugoOkno = new Intent(this, Activity_2_Mize.class);
         drugoOkno.putExtra("POSITION_MIZA",pozicijaMiza);
         startActivity(drugoOkno);

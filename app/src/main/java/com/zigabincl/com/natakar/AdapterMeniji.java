@@ -26,10 +26,8 @@ import java.util.ArrayList;
  * Created by SPACE MARINE GENERAL on 2.5.2016.
  */
 public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder> {
-    //public static final String PARAMETER_POSITION_1 = "POSITION_Narocilo";
     private DataAll mDataset;
-    private DataAll backupDataset;
-    Activity ac;
+    Activity_3_Meniji ac;
     public int positionMiza;
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -58,14 +56,14 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
         }
     }
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AdapterMeniji(DataAll myDataset,DataAll kopija, Activity ac, int pozicijaM) {
+    public AdapterMeniji(DataAll myDataset,DataAll kopija, Activity_3_Meniji ac, int pozicijaM) {
         this.ac = ac;
         mDataset = myDataset;
-        backupDataset=kopija;
+      //  backupDataset=kopija;
         positionMiza=pozicijaM;
 
         //klik na shrani naročilo
-        GumbEvent();
+        GumbShrani();
     }
 
     // Create new views (invoked by the layout manager)
@@ -111,6 +109,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
             if(mDataset.getSeznamVsehMenijev().get(positionMeni).getIme()==mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getIme())
             {
                 holder.elementVrste.setBackgroundColor(Color.rgb(120,255,120)); //zelena
+
                 mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(true);
                 holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getCena())+" €");
                 holder.txtKolicina.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
@@ -138,7 +137,8 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                     {
                         if(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()<20)
                         {
-                            mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).setKolicina(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+1);
+                            mDataset.change();
+                            mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).inc();
                             holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getCena())+" €");
                             holder.txtKolicina.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
                         }
@@ -159,7 +159,8 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                     {
                         if(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()>1)
                         {
-                            mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).setKolicina(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()-1);
+                            mDataset.change();
+                            mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).decr();
                             holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getCena())+" €");
                             holder.txtKolicina.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
                         }
@@ -180,6 +181,8 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 {
                     mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(false);
                     holder.elementVrste.setBackgroundColor(Color.rgb(100,200,255)); //modra
+                    mDataset.change();
+                  //  mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(positionMeni).setKolicina(1);
                     holder.btnPlus.setEnabled(false);
                     holder.btnMinus.setEnabled(false);
                     mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().remove(mDataset.getSeznamVsehMenijev().get(positionMeni));
@@ -188,6 +191,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 {
                     mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(true);
                     holder.elementVrste.setBackgroundColor(Color.rgb(120,255,120)); //zelena
+                    mDataset.change();
                     holder.btnPlus.setEnabled(true);
                     holder.btnMinus.setEnabled(true);
                     mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().add(mDataset.getSeznamVsehMenijev().get(positionMeni));
@@ -197,29 +201,21 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
     }
 
     //shrani gumb
-    public void GumbEvent()
+    public void GumbShrani()
     {
         final FloatingActionButton fab = (FloatingActionButton) ac.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AlertDialog.Builder(view.getContext())
-                        .setTitle("Potrditev?")
-                        .setMessage("Ali želite shraniti naročilo?")
-                        .setPositiveButton("Shrani", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                ac.onBackPressed();
-                            }
-                        })
-                        .setNegativeButton("Prekliči", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                mDataset=backupDataset;
-                                ac.onBackPressed();
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
+                if(mDataset.ch) {
+                    ac.app.save();
+                    mDataset.saved();
+                }
+                Intent drugoOkno = new Intent(ac, Activity_2_Mize.class);
+                drugoOkno.putExtra("POSITION_MIZA",positionMiza);
+                ac.startActivity(drugoOkno);
             }
+
         });
     }
     // Return the size of your dataset (invoked by the layout manager)

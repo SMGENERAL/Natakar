@@ -103,6 +103,12 @@ public class Meni {
         izracunajCeno();
     }
 
+    public void inc() {
+        Kolicina++;
+    }
+    public void decr() {
+        Kolicina--;
+    }
     @Override
     public String toString() {
         return "Meni{" +
@@ -114,4 +120,6 @@ public class Meni {
                 ", Kolicina=" + Kolicina +
                 '}';
     }
+
+
 }
