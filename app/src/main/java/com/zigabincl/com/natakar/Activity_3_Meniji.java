@@ -46,36 +46,40 @@ public class Activity_3_Meniji extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         // specify an adapter (see also next example)
-        mAdapter = new AdapterMeniji(app.getAll(),app.getAll(), this, pozicijaMiza);
+        mAdapter = new AdapterMeniji(app.getAll(), this, pozicijaMiza);
         mRecyclerView.setAdapter(mAdapter);
     }
     @Override
     public void onBackPressed() {
         if(app.getAll().ch) {
+            app.load();
 
-
-            new AlertDialog.Builder(this)
+            /*new AlertDialog.Builder(this)
                     .setTitle("Potrditev?")
                     .setMessage("Ali želite shraniti naročilo?")
                     .setPositiveButton("Shrani", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             app.save();
                             app.getAll().saved();
-                           // onBackPressed();
+
+
                         }
                     })
                     .setNegativeButton("Prekliči", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             app.load();
-                           // onBackPressed();
+
                         }
                     })
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
+                    */
+
         }
         Intent drugoOkno = new Intent(this, Activity_2_Mize.class);
         drugoOkno.putExtra("POSITION_MIZA",pozicijaMiza);
         startActivity(drugoOkno);
+
     }
 
 }

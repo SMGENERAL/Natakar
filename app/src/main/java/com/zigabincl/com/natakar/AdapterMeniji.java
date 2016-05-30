@@ -56,10 +56,9 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
         }
     }
     // Provide a suitable constructor (depends on the kind of dataset)
-    public AdapterMeniji(DataAll myDataset,DataAll kopija, Activity_3_Meniji ac, int pozicijaM) {
+    public AdapterMeniji(DataAll myDataset, Activity_3_Meniji ac, int pozicijaM) {
         this.ac = ac;
         mDataset = myDataset;
-      //  backupDataset=kopija;
         positionMiza=pozicijaM;
 
         //klik na shrani naročilo
@@ -77,8 +76,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
-
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int positionMeni) {
         //nastavi vse texte na trenutni meni
@@ -99,7 +97,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
             nizPijace+=mDataset.getSeznamVsehMenijev().get(positionMeni).getSeznamPijace().get(j).getIme()+"\n";
         }
         holder.txtSeznamPijace.setText(nizPijace);
-
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //nastavi barve in podatke glede ali je meni v naročilu
         mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(false);
         holder.btnPlus.setEnabled(false);
@@ -117,6 +115,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 holder.btnMinus.setEnabled(true);
             }
         }
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //slika
         holder.iv.setImageDrawable(this.ac.getDrawable(R.drawable.meni));
 
@@ -127,8 +126,9 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 Snackbar.make(ac.findViewById(holder.elementVrste.getId()), "Pojdi na podrobnosti menija "+(positionMeni+1), Snackbar.LENGTH_LONG).show();
             }
         });
-
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //izbira kolicine
+        // +
         holder.btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,7 +150,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 }
             }
         });
-
+        // -
         holder.btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,8 +172,8 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 }
             }
         });
-
-        //klik na meni
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //klik na meni (označi / odznači)
         holder.elementVrste.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,7 +199,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
             }
         });
     }
-
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     //shrani gumb
     public void GumbShrani()
     {

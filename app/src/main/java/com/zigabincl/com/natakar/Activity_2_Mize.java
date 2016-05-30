@@ -33,6 +33,8 @@ public class Activity_2_Mize extends AppCompatActivity {
         // specify an adapter (see also next example)
         mAdapter = new AdapterMize(app.getAll(), this);
         mRecyclerView.setAdapter(mAdapter);
+
+        app.save();
     }
 
     @Override

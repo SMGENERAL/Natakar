@@ -1,6 +1,7 @@
 package com.zigabincl.com.natakar;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
     //public static final String PARAMETER_POSITION_1 = "POSITION_Miza";
     private DataAll mDataset;
+    private Podatki app;
     Activity ac;
 
     // Provide a reference to the views for each data item
@@ -70,6 +72,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
     }
 
     // Replace the contents of a view (invoked by the layout manager)
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int positionMiza) {
         holder.txtNaslov.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getIme());
@@ -93,7 +96,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         holder.txtMeniji.setText(menijiText);
 
         holder.iv.setImageDrawable(this.  ac.getDrawable(R.drawable.miza));
-
+        //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //klik na element
         holder.elementVrste.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +118,10 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
                             .setPositiveButton("Potrdi", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().clear();
+
+
                                     //natisni račun
+                                    //restart activity
                                     ac.finish();
                                     ac.startActivity(ac.getIntent());
                                 }
@@ -123,6 +129,9 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
                             .setNegativeButton("Počisti", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().clear();
+                                    mDataset.change();
+
+                                    //restart activity
                                     ac.finish();
                                     ac.startActivity(ac.getIntent());
                                 }
