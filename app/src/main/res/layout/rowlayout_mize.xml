@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/black"
     android:id="@+id/elementOzadje">
 
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/mojaLightBlue"
-    android:id="@+id/elementVrste"
-    android:layout_marginBottom="2dp">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mojaLightBlue"
+        android:id="@+id/elementVrste"
+        android:layout_marginBottom="2dp">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:contentDescription="TODO"
-        android:src="@drawable/miza"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:adjustViewBounds="true"
-        android:background="@android:color/white"
-        />
-
-
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/miza"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:adjustViewBounds="true"
+            android:background="@android:color/white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -56,27 +55,27 @@
             android:layout_marginTop="2dp" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="0 €"
-        android:id="@+id/txtCena"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="10dp"
-        android:background="@android:color/white"
-        android:layout_alignTop="@+id/txtNaslov"
-        android:layout_alignParentEnd="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="0 €"
+            android:id="@+id/txtCena"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="10dp"
+            android:background="@android:color/white"
+            android:layout_alignTop="@+id/txtNaslov"
+            android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="SeznamMenijev"
-        android:id="@+id/txtMeniji"
-        android:textColor="@android:color/black"
-        android:layout_below="@+id/txtNaslov"
-        android:layout_alignStart="@+id/txtNaslov" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="SeznamMenijev"
+            android:id="@+id/txtMeniji"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/txtNaslov"
+            android:layout_alignStart="@+id/txtNaslov" />
 
-</RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

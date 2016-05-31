@@ -9,6 +9,7 @@ public class Miza {
     private String ime;
     private ArrayList<Meni> SeznamMenijev;
     private Double SkupnaCena;
+    private int Lokacija;
 
     public Miza() {
         this.ime="Ni imena";
@@ -59,12 +60,21 @@ public class Miza {
         SkupnaCena = skupnaCena;
     }
 
+    public int getLokacija() {
+        return Lokacija;
+    }
+
+    public void setLokacija(int lokacija) {
+        Lokacija = lokacija;
+    }
+
     @Override
     public String toString() {
         return "Miza{" +
                 "ime='" + ime + '\'' +
                 ", SeznamMenijev=" + SeznamMenijev +
                 ", SkupnaCena=" + SkupnaCena +
+                ", Lokacija=" + Lokacija +
                 '}';
     }
 }

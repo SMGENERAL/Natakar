@@ -164,34 +164,43 @@ public void change(){
 
         //MIZE / NAROČILA
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 1"));
+        vsipodatki.getSeznamVsehMiz().get(0).setLokacija(0);
         //vsipodatki.getSeznamVsehMiz().get(0).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(0));
 
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 2"));
+        vsipodatki.getSeznamVsehMiz().get(1).setLokacija(1);
         //vsipodatki.getSeznamVsehMiz().get(1).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(1));
         //vsipodatki.getSeznamVsehMiz().get(1).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(4));
 
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 3"));
+        vsipodatki.getSeznamVsehMiz().get(2).setLokacija(2);
 
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 4"));
+        vsipodatki.getSeznamVsehMiz().get(3).setLokacija(3);
         //vsipodatki.getSeznamVsehMiz().get(3).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(6));
         //vsipodatki.getSeznamVsehMiz().get(3).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(7));
         //getSeznamVsehMiz().get(3).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(9));
 
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 5"));
+        vsipodatki.getSeznamVsehMiz().get(4).setLokacija(4);
         //vsipodatki.getSeznamVsehMiz().get(4).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(2));
         //vsipodatki.getSeznamVsehMiz().get(4).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(4));
         //vsipodatki.getSeznamVsehMiz().get(4).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(6));
         //vsipodatki.getSeznamVsehMiz().get(4).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(7));
 
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 6"));
+        vsipodatki.getSeznamVsehMiz().get(5).setLokacija(5);
 
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 7"));
+        vsipodatki.getSeznamVsehMiz().get(6).setLokacija(6);
 
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 8"));
+        vsipodatki.getSeznamVsehMiz().get(7).setLokacija(7);
         //vsipodatki.getSeznamVsehMiz().get(7).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(2));
         //vsipodatki.getSeznamVsehMiz().get(7).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(5));
 
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 9"));
+        vsipodatki.getSeznamVsehMiz().get(8).setLokacija(8);
         //vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(1));
         //vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(3));
         //vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(5));
@@ -200,6 +209,7 @@ public void change(){
         //vsipodatki.getSeznamVsehMiz().get(8).getSeznamMenijev().add(vsipodatki.getSeznamVsehMenijev().get(9));
 
         vsipodatki.getSeznamVsehMiz().add(new Miza("Miza 10"));
+        vsipodatki.getSeznamVsehMiz().get(9).setLokacija(9);
 
         return vsipodatki;
     }
