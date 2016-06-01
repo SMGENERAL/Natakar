@@ -15,17 +15,20 @@ public class Miza {
         this.ime="Ni imena";
         this.SeznamMenijev=new ArrayList<Meni>();
         this.SkupnaCena=0.0;
+        this.Lokacija=100;
     }
 
     public Miza(String ime, ArrayList<Meni> seznamMenijev) {
         this.ime = ime;
         this.SeznamMenijev = seznamMenijev;
         izracunajSkupnoCeno();
+        this.Lokacija=100;
     }
     public Miza(String ime) {
         this.ime = ime;
         this.SeznamMenijev=new ArrayList<Meni>();
         this.SkupnaCena=0.0;
+        this.Lokacija=100;
     }
     public void izracunajSkupnoCeno() {
         this.SkupnaCena=0.0;

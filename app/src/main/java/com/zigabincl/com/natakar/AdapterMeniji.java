@@ -102,7 +102,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
         mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(false);
         holder.btnPlus.setEnabled(false);
         holder.btnMinus.setEnabled(false);
-        holder.elementVrste.setBackgroundColor(Color.rgb(100,200,255)); //modra
+        holder.elementVrste.setBackgroundColor(Color.rgb(221,221,221)); //siva
         for (int i = 0; i <mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().size() ; i++) {
             if(mDataset.getSeznamVsehMenijev().get(positionMeni).getIme()==mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getIme())
             {
@@ -180,7 +180,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 if(mDataset.getSeznamVsehMenijev().get(positionMeni).isOznacen())
                 {
                     mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(false);
-                    holder.elementVrste.setBackgroundColor(Color.rgb(100,200,255)); //modra
+                    holder.elementVrste.setBackgroundColor(Color.rgb(221,221,221)); //siva
                     mDataset.change();
                   //  mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(positionMeni).setKolicina(1);
                     holder.btnPlus.setEnabled(false);

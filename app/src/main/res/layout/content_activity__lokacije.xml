@@ -12,10 +12,98 @@
 
         <com.zigabincl.com.natakar.MizeLokacije
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:id="@+id/Platno"
-            android:background="@android:color/holo_blue_dark"
+            android:background="@color/MojaSiva"
             android:layout_alignParentTop="true" />
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Platno"
+            android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Legenda:"
+                    android:id="@+id/lblInfo"
+                    android:layout_below="@+id/Platno"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/textView"
+                    android:background="#ff0000"
+                    android:layout_below="@+id/lblInfo"
+                    android:layout_alignStart="@+id/lblInfo"
+                    android:layout_marginTop="5dp" />
+
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/textView2"
+                    android:background="#000000"
+                    android:layout_below="@+id/textView"
+                    android:layout_alignStart="@+id/textView"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:id="@+id/textView3"
+                    android:background="#ffffff"
+                    android:layout_below="@+id/textView2"
+                    android:layout_alignStart="@+id/textView2"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Izbrana miza"
+                    android:id="@+id/textView4"
+                    android:layout_alignTop="@+id/textView"
+                    android:layout_toEndOf="@+id/textView"
+                    android:textSize="12dp"
+                    android:textIsSelectable="false"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Zaseden prostor"
+                    android:id="@+id/textView5"
+                    android:textSize="12dp"
+                    android:textIsSelectable="false"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="5dp"
+                    android:layout_alignTop="@+id/textView2"
+                    android:layout_toEndOf="@+id/textView2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Prazen prostor"
+                    android:id="@+id/textView6"
+                    android:textSize="12dp"
+                    android:textIsSelectable="false"
+                    android:textColor="#000000"
+                    android:layout_marginLeft="5dp"
+                    android:layout_alignTop="@+id/textView3"
+                    android:layout_toEndOf="@+id/textView3" />
+        </RelativeLayout>
 
 </RelativeLayout>

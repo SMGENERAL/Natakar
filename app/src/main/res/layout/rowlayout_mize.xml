@@ -6,26 +6,46 @@
     android:background="@android:color/black"
     android:id="@+id/elementOzadje">
 
-
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/mojaLightBlue"
+        android:background="@color/MojaSiva"
         android:id="@+id/elementVrste"
         android:layout_marginBottom="2dp">
 
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="TODO"
-            android:src="@drawable/miza"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:adjustViewBounds="true"
-            android:background="@android:color/white" />
+        <!--<ImageView-->
+            <!--android:id="@+id/icon"-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:contentDescription="TODO"-->
+            <!--android:src="@drawable/miza"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:adjustViewBounds="true"-->
+            <!--android:background="@android:color/white" />-->
+
+        <RelativeLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/elementPlatnoOzadje"
+            android:background="@android:color/black">
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/elementPlatno"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="2dp">
+            <com.zigabincl.com.natakar.MizeLokacije
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:adjustViewBounds="true"
+                android:id="@+id/Platno" />
+            </RelativeLayout>
+        </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,12 +55,9 @@
             android:id="@+id/txtNaslov"
             android:textStyle="bold"
             android:textColor="#000000"
+            android:layout_marginLeft="10dp"
             android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/icon"
-            android:layout_toEndOf="@+id/icon"
-            android:layout_marginLeft="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="5dp" />
+            android:layout_toEndOf="@+id/elementPlatnoOzadje" />
 
         <TextView
             android:layout_width="wrap_content"

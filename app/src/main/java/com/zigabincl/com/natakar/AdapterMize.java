@@ -43,6 +43,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         public TextView txtMeniji;
         public RelativeLayout elementVrste;
         public ImageView iv;
+        public MizeLokacije mizeLokacije;
 
         public ViewHolder(View v) {
             super(v);
@@ -51,7 +52,8 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
             txtMeniji = (TextView) v.findViewById(R.id.txtMeniji);
             txtNarocilo = (TextView) v.findViewById(R.id.txtHranaNarocilo);
             elementVrste = (RelativeLayout) v.findViewById(R.id.elementVrste);
-            iv = (ImageView)v.findViewById(R.id.icon);
+            //iv = (ImageView)v.findViewById(R.id.icon);
+            mizeLokacije = (MizeLokacije)v.findViewById(R.id.Platno);
         }
     }
     // Provide a suitable constructor (depends on the kind of dataset)
@@ -81,7 +83,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         holder.txtNarocilo.setText("Narocila: "+velikost);
         if (velikost>0)
         {
-            holder.elementVrste.setBackgroundColor(Color.rgb(100,200,255)); //modra
+            holder.elementVrste.setBackgroundColor(Color.rgb(221,221,221)); //siva
         }
         else
         {
@@ -95,7 +97,30 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         }
         holder.txtMeniji.setText(menijiText);
 
-        holder.iv.setImageDrawable(this.  ac.getDrawable(R.drawable.miza));
+        //CustomView
+        int[] poljeLokacij=new int[100];
+        //nastavi vse na 0 (bela)
+        for (int i = 0; i < poljeLokacij.length; i++) {
+            poljeLokacij[i]=0;
+        }
+        //nastavi vse mize na 1 (črna)
+        for (int i = 0; i < mDataset.getSeznamVsehMiz().size(); i++) {
+            int pos=mDataset.getSeznamVsehMiz().get(i).getLokacija();
+            poljeLokacij[pos]=1;
+        }
+        //nastavi izbrano na 2 (rdeča)
+        poljeLokacij[positionMiza]=2;
+        holder.mizeLokacije.setPoljeLokacij(poljeLokacij);
+        holder.mizeLokacije.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent drugoOkno = new Intent(ac, Activity_Lokacije.class);
+                drugoOkno.putExtra("POSITION_MIZA",positionMiza);
+                ac.startActivity(drugoOkno);
+            }
+        });
+
+        //holder.iv.setImageDrawable(this.  ac.getDrawable(R.drawable.miza));
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         //klik na element
         holder.elementVrste.setOnClickListener(new View.OnClickListener() {
@@ -118,8 +143,6 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
                             .setPositiveButton("Potrdi", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().clear();
-
-
                                     //natisni račun
                                     //restart activity
                                     ac.finish();
