@@ -1,5 +1,6 @@
 package com.zigabincl.com.natakar;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -11,7 +12,10 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.provider.ContactsContract;
+import android.support.design.widget.Snackbar;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -26,6 +30,10 @@ public class MizeLokacije extends View {
     private int startY;
     private int stopY;
     private int[] poljeLokacij;
+    private int lokacija;
+    int kSirina;
+    int kVisina;
+    public boolean editMode;
 
     public MizeLokacije(Context context) {
         super(context);
@@ -39,9 +47,40 @@ public class MizeLokacije extends View {
         super(context, ats, defaultStyle);
     }
 
-    public void setPoljeLokacij(int[] nPolje)
-    {
-        poljeLokacij=nPolje;
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+          if (editMode) {
+              float eventX = event.getX();
+              float eventY = event.getY();
+
+              switch (event.getAction()) {
+
+                  case MotionEvent.ACTION_UP:
+                      int y = (int) eventY / kVisina;
+                      int x = (int) eventX / kSirina;
+
+                      if(poljeLokacij[x + y * 10]!=1) //premakne mizo
+                      {
+                          poljeLokacij[lokacija] = 0;
+                          lokacija = x + y * 10;
+                          poljeLokacij[lokacija] = 2;
+                      }
+                      break;
+                  //  default:
+                  // return true;
+              }
+              // Schedules a repaint.
+              super.onTouchEvent(event);
+              invalidate();
+              return true;
+          }
+          else
+          {
+              // Schedules a repaint.
+              super.onTouchEvent(event);
+              //invalidate();
+              return true;
+          }
     }
 
     @Override
@@ -49,15 +88,15 @@ public class MizeLokacije extends View {
         setFocusable(false);
         int width = canvas.getWidth();
         int height = canvas.getHeight();
-        int kSirina=width/10;
-        int kVisina=height/10;
+         kSirina=width/10;
+         kVisina=height/10;
 
         Rect kvadrat=new Rect();
         Paint barvaFill=new Paint();
         Paint barvaStroke=new Paint();
         barvaFill.setStyle(Paint.Style.FILL);
         barvaStroke.setStyle(Paint.Style.STROKE);
-        barvaStroke.setColor(Color.BLACK);
+        barvaStroke.setColor(Color.LTGRAY);
         barvaStroke.setStrokeWidth(4);
 
         int k=0; //čez polje lokacij
@@ -92,5 +131,21 @@ public class MizeLokacije extends View {
         int parentHeight = MeasureSpec.getSize(heightMeasureSpec);
         this.setMeasuredDimension(parentWidth, parentHeight);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    }
+
+    public int[] getPoljeLokacij() {
+        return poljeLokacij;
+    }
+
+    public void setPoljeLokacij(int[] poljeLokacij) {
+        this.poljeLokacij = poljeLokacij;
+    }
+
+    public int getLokacija() {
+        return lokacija;
+    }
+
+    public void setLokacija(int lokacija) {
+        this.lokacija = lokacija;
     }
 }

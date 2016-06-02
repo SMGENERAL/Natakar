@@ -11,6 +11,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -98,6 +99,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         holder.txtMeniji.setText(menijiText);
 
         //CustomView
+        holder.mizeLokacije.editMode=false;
         int[] poljeLokacij=new int[100];
         //nastavi vse na 0 (bela)
         for (int i = 0; i < poljeLokacij.length; i++) {
@@ -109,8 +111,10 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
             poljeLokacij[pos]=1;
         }
         //nastavi izbrano na 2 (rdeča)
-        poljeLokacij[positionMiza]=2;
+        poljeLokacij[mDataset.getSeznamVsehMiz().get(positionMiza).getLokacija()]=2;
         holder.mizeLokacije.setPoljeLokacij(poljeLokacij);
+       // holder.mizeLokacije.;
+        holder.mizeLokacije.setLokacija(positionMiza);
         holder.mizeLokacije.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

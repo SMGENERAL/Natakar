@@ -6,8 +6,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class Activity_Lokacije extends AppCompatActivity {
     public Podatki app;
@@ -39,6 +42,7 @@ public class Activity_Lokacije extends AppCompatActivity {
         }
 
         //CustomView
+        mizeLokacije.editMode=true;
         int[] poljeLokacij=new int[100];
         //nastavi vse na 0 (bela)
         for (int i = 0; i < poljeLokacij.length; i++) {
@@ -50,17 +54,30 @@ public class Activity_Lokacije extends AppCompatActivity {
             poljeLokacij[pos]=1;
         }
         //nastavi izbrano na 2 (rdeča)
-        poljeLokacij[positionMiza]=2;
+        poljeLokacij[app.getAll().getSeznamVsehMiz().get(positionMiza).getLokacija()]=2;
         mizeLokacije.setPoljeLokacij(poljeLokacij);
-
+        mizeLokacije.setLokacija(positionMiza);
+        //shrani gumb
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Premaknil mizo "+(positionMiza+1), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                app.getAll().getSeznamVsehMiz().get(positionMiza).setLokacija(mizeLokacije.getLokacija());
+                app.save();
+                app.getAll().saved();
+                Snackbar.make(view, "Shranil novo lokacijo mize "+(positionMiza+1), Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        if(app.getAll().ch)
+        {
+            app.load();
+        }
+        Intent drugoOkno = new Intent(this, Activity_2_Mize.class);
+        startActivity(drugoOkno);
+
     }
 
 }
