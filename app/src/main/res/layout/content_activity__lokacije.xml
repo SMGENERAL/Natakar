@@ -10,18 +10,30 @@
     android:background="@android:color/holo_blue_dark"
     android:id="@+id/layoutPrikaz">
 
-        <com.zigabincl.com.natakar.MizeLokacije
-            android:layout_width="fill_parent"
-            android:layout_height="400dp"
-            android:id="@+id/Platno"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/PlatnoOzadje"
             android:background="@color/MojaSiva"
-            android:layout_alignParentTop="true" />
+            android:layout_margin="6dp">
+                <com.zigabincl.com.natakar.MizeLokacije
+                    android:layout_width="fill_parent"
+                    android:layout_height="380dp"
+                    android:id="@+id/Platno"
+                    android:background="@color/MojaSiva"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="4dp" />
+        </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Platno"
-            android:layout_alignParentStart="true">
+            android:id="@+id/layoutLegenda"
+            android:background="@color/MojaSiva"
+            android:layout_below="@+id/PlatnoOzadje"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="6dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -31,8 +43,8 @@
                     android:id="@+id/lblInfo"
                     android:layout_below="@+id/Platno"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
                     android:textColor="#000000"
                     android:textStyle="bold" />
 
@@ -77,7 +89,8 @@
                     android:textSize="12dp"
                     android:textIsSelectable="false"
                     android:textColor="#000000"
-                    android:layout_marginLeft="5dp" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -90,7 +103,8 @@
                     android:textColor="#000000"
                     android:layout_marginLeft="5dp"
                     android:layout_alignTop="@+id/textView2"
-                    android:layout_toEndOf="@+id/textView2" />
+                    android:layout_toEndOf="@+id/textView2"
+                    android:layout_marginRight="5dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -103,7 +117,9 @@
                     android:textColor="#000000"
                     android:layout_marginLeft="5dp"
                     android:layout_alignTop="@+id/textView3"
-                    android:layout_toEndOf="@+id/textView3" />
+                    android:layout_toEndOf="@+id/textView3"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp" />
         </RelativeLayout>
 
 </RelativeLayout>

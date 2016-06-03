@@ -81,7 +81,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         holder.txtNaslov.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getIme());
         holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSkupnaCena())+" €");
         final int velikost=mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().size();
-        holder.txtNarocilo.setText("Narocila: "+velikost);
+        holder.txtNarocilo.setText("N: "+velikost);
         if (velikost>0)
         {
             holder.elementVrste.setBackgroundColor(Color.rgb(221,221,221)); //siva

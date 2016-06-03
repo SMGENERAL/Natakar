@@ -82,19 +82,19 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
         //nastavi vse texte na trenutni meni
         holder.txtNaslov.setText(mDataset.getSeznamVsehMenijev().get(positionMeni).getIme());
         holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMenijev().get(positionMeni).getCena())+" €");
-        holder.txtKolicina.setText(mDataset.getSeznamVsehMenijev().get(positionMeni).getKolicina()+"x");
+        holder.txtKolicina.setText("K: "+mDataset.getSeznamVsehMenijev().get(positionMeni).getKolicina()+"x");
 
         String nizHrane="";
         int velikostHrane=mDataset.getSeznamVsehMenijev().get(positionMeni).getSeznamHrane().size();
         for (int j = 0; j <velikostHrane ; j++) {
-            nizHrane+=mDataset.getSeznamVsehMenijev().get(positionMeni).getSeznamHrane().get(j).getIme()+"\n";
+            nizHrane+="-"+mDataset.getSeznamVsehMenijev().get(positionMeni).getSeznamHrane().get(j).getIme()+"\n";
         }
         holder.txtSeznamHrane.setText(nizHrane);
 
         String nizPijace="";
         int velikostPijace=mDataset.getSeznamVsehMenijev().get(positionMeni).getSeznamPijace().size();
         for (int j = 0; j <velikostPijace ; j++) {
-            nizPijace+=mDataset.getSeznamVsehMenijev().get(positionMeni).getSeznamPijace().get(j).getIme()+"\n";
+            nizPijace+="-"+mDataset.getSeznamVsehMenijev().get(positionMeni).getSeznamPijace().get(j).getIme()+"\n";
         }
         holder.txtSeznamPijace.setText(nizPijace);
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
 
                 mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(true);
                 holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getCena())+" €");
-                holder.txtKolicina.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
+                holder.txtKolicina.setText("K: "+mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
                 holder.btnPlus.setEnabled(true);
                 holder.btnMinus.setEnabled(true);
             }
@@ -140,7 +140,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                             mDataset.change();
                             mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).inc();
                             holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getCena())+" €");
-                            holder.txtKolicina.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
+                            holder.txtKolicina.setText("K: "+mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
                         }
                         else
                         {
@@ -162,7 +162,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                             mDataset.change();
                             mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).decr();
                             holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getCena())+" €");
-                            holder.txtKolicina.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
+                            holder.txtKolicina.setText("K: "+mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
                         }
                         else
                         {
