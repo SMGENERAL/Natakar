@@ -4,6 +4,7 @@
     package="com.zigabincl.com.natakar">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".Podatki"
@@ -16,8 +17,8 @@
         tools:ignore="HardcodedDebugMode">
         <activity
             android:name=".Activity_1_Login"
-            android:screenOrientation="portrait"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +29,7 @@
         <activity
             android:name=".Activity_2_Mize"
             android:label="@string/title_activity_activity_mize"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             android:parentActivityName=".Activity_1_Login">
             <meta-data
@@ -42,6 +44,7 @@
         <activity
             android:name=".Activity_3_Meniji"
             android:label="@string/title_activity_activity_4__meniji"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             android:parentActivityName=".Activity_3_Narocila">
             <meta-data
@@ -51,10 +54,21 @@
         <activity
             android:name=".Activity_Lokacije"
             android:label="@string/title_activity_activity__lokacije"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zigabincl.com.natakar.Activity_2_Mize" />
+        </activity>
+        <activity
+            android:name=".Activity_code"
+            android:label="@string/title_activity_activity_code"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zigabincl.com.natakar.Activity_2_Mize"
+            />
         </activity>
     </application>
 

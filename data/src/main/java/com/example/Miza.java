@@ -1,5 +1,9 @@
 package com.example;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -10,12 +14,14 @@ public class Miza {
     private ArrayList<Meni> SeznamMenijev;
     private Double SkupnaCena;
     private int Lokacija;
+    private int Id;
 
     public Miza() {
         this.ime="Ni imena";
         this.SeznamMenijev=new ArrayList<Meni>();
         this.SkupnaCena=0.0;
         this.Lokacija=100;
+        this.Id=0;
     }
 
     public Miza(String ime, ArrayList<Meni> seznamMenijev) {
@@ -23,13 +29,24 @@ public class Miza {
         this.SeznamMenijev = seznamMenijev;
         izracunajSkupnoCeno();
         this.Lokacija=100;
+        this.Id=0;
     }
     public Miza(String ime) {
         this.ime = ime;
         this.SeznamMenijev=new ArrayList<Meni>();
         this.SkupnaCena=0.0;
         this.Lokacija=100;
+        this.Id=0;
     }
+
+    public Miza(Miza druga) {
+        this.ime = druga.getIme();
+        this.SeznamMenijev=druga.getSeznamMenijev();
+        this.SkupnaCena=druga.getSkupnaCena();
+        this.Lokacija=druga.getLokacija();
+        this.Id=druga.getId();
+    }
+
     public void izracunajSkupnoCeno() {
         this.SkupnaCena=0.0;
         for (int i = 0; i < SeznamMenijev.size(); i++) {
@@ -71,6 +88,14 @@ public class Miza {
         Lokacija = lokacija;
     }
 
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
     @Override
     public String toString() {
         return "Miza{" +
@@ -78,6 +103,7 @@ public class Miza {
                 ", SeznamMenijev=" + SeznamMenijev +
                 ", SkupnaCena=" + SkupnaCena +
                 ", Lokacija=" + Lokacija +
+                ", Id=" + Id +
                 '}';
     }
 }

@@ -1,9 +1,14 @@
 package com.zigabincl.com.natakar;
 
+import android.*;
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -27,11 +32,9 @@ public class Activity_1_Login extends AppCompatActivity implements
         View.OnClickListener {
 
     private Podatki vsiPodatki = new Podatki();
-    //private TextView txtPodatki;
     public static final String LOGOUT = "LOGOUT";
     private static final String TAG = "Activity_1_Login";
     private static final int RC_SIGN_IN = 9001;
-
     private ProgressDialog mProgressDialog;
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
@@ -43,6 +46,14 @@ public class Activity_1_Login extends AppCompatActivity implements
         setContentView(R.layout.layout_activity_1);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //dovoljenja
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.CAMERA},1);
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+        }
 
         mStatusTextView = (TextView) findViewById(R.id.lblStatus);
         findViewById(R.id.sign_in_button).setOnClickListener(this);

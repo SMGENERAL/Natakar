@@ -53,28 +53,6 @@ public class Activity_3_Meniji extends AppCompatActivity {
     public void onBackPressed() {
         if(app.getAll().ch) {
             app.load();
-
-            /*new AlertDialog.Builder(this)
-                    .setTitle("Potrditev?")
-                    .setMessage("Ali želite shraniti naročilo?")
-                    .setPositiveButton("Shrani", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            app.save();
-                            app.getAll().saved();
-
-
-                        }
-                    })
-                    .setNegativeButton("Prekliči", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            app.load();
-
-                        }
-                    })
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-                    */
-
         }
         Intent drugoOkno = new Intent(this, Activity_2_Mize.class);
         drugoOkno.putExtra("POSITION_MIZA",pozicijaMiza);

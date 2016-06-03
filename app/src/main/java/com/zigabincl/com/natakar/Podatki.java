@@ -28,7 +28,7 @@ public class Podatki extends Application {
     public void onCreate() {
         loginStatusText="Niste prijavljeni.";
         super.onCreate();
-        if (!load())                                                                              //TODO da se podatki vedno osvežijo. popravi to za fiksne podatke, da jih lahko spreminjaš.
+        //if (!load())                                                                              //TODO da se podatki vedno osvežijo. popravi to za fiksne podatke, da jih lahko spreminjaš.
             vsiPodatki = DataAll.getScenarijData(); //testni prvi podatki
     }
     public DataAll getAll() {

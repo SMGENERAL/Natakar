@@ -9,10 +9,12 @@ import java.util.ListIterator;
 
 public class DataAll {
    transient public boolean ch;
+    private int IDnavrsti;
     private ArrayList<Miza> seznamVsehMiz;
     private ArrayList<Meni> seznamVsehMenijev;
     private ArrayList<Hrana> seznamVseHrane;
     private ArrayList<Pijaca> seznamVsehPijac;
+    private ArrayList<Miza> seznamZgodovina;
 public void change(){
     ch=true;
 }
@@ -25,6 +27,8 @@ public void change(){
         this.seznamVsehMenijev=new ArrayList<Meni>();
         this.seznamVseHrane=new ArrayList<Hrana>();
         this.seznamVsehPijac=new ArrayList<Pijaca>();
+        this.seznamZgodovina=new ArrayList<Miza>();
+        this.IDnavrsti=1;
     }
 
     public DataAll(ArrayList<Miza> seznamVsehMiz, ArrayList<Meni> seznamVsehMenijev, ArrayList<Hrana> seznamVseHrane, ArrayList<Pijaca> seznamVsehPijac) {
@@ -33,6 +37,8 @@ public void change(){
         this.seznamVsehMenijev = seznamVsehMenijev;
         this.seznamVseHrane = seznamVseHrane;
         this.seznamVsehPijac = seznamVsehPijac;
+        this.seznamZgodovina=new ArrayList<Miza>();
+        this.IDnavrsti=1;
     }
 
     public ArrayList<Miza> getSeznamVsehMiz() {
@@ -65,16 +71,6 @@ public void change(){
 
     public void setSeznamVsehPijac(ArrayList<Pijaca> seznamVsehPijac) {
         this.seznamVsehPijac = seznamVsehPijac;
-    }
-
-    @Override
-    public String toString() {
-        return "DataAll{" +
-                "seznamVsehMiz=" + seznamVsehMiz +
-                ", seznamVsehMenijev=" + seznamVsehMenijev +
-                ", seznamVseHrane=" + seznamVseHrane +
-                ", seznamVsehPijac=" + seznamVsehPijac +
-                '}';
     }
 
     public static DataAll getScenarijData() {
@@ -212,5 +208,37 @@ public void change(){
         vsipodatki.getSeznamVsehMiz().get(9).setLokacija(84);
 
         return vsipodatki;
+    }
+
+    public ArrayList<Miza> getSeznamZgodovina() {
+        return seznamZgodovina;
+    }
+
+    public void setSeznamZgodovina(ArrayList<Miza> seznamZgodovina) {
+        this.seznamZgodovina = seznamZgodovina;
+    }
+
+    public int getIDnavrsti() {
+        return IDnavrsti;
+    }
+
+    public void setIDnavrsti(int IDnavrsti) {
+        this.IDnavrsti = IDnavrsti;
+    }
+
+    @Override
+    public String toString() {
+        return "DataAll{" +
+                "ch=" + ch +
+                ", IDnavrsti=" + IDnavrsti +
+                ", seznamVsehMiz=" + seznamVsehMiz +
+                ", seznamVsehMenijev=" + seznamVsehMenijev +
+                ", seznamVseHrane=" + seznamVseHrane +
+                ", seznamVsehPijac=" + seznamVsehPijac +
+                ", seznamZgodovina=" + seznamZgodovina +
+                '}';
+    }
+    public void inc() {
+        this.IDnavrsti++;
     }
 }

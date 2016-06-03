@@ -1,12 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Activity_3_Narocila">
+    tools:context=".Activity_2_Mize">
 
     <item
-        android:id="@+id/delete_narocilo"
-        android:title="@string/delete_narocilo"
-        android:icon="@drawable/kosbel"
+        android:id="@+id/action_settings2"
+        android:title="Scan"
+        android:icon="@drawable/scancode"
         android:orderInCategory="300"
         app:showAsAction="ifRoom" />
 </menu>
