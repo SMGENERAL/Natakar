@@ -54,7 +54,7 @@ public class Activity_code extends AppCompatActivity {
         barcodeDATA = (TextView) findViewById(R.id.code_data);
 
         barcodeDetector = new BarcodeDetector.Builder(this).setBarcodeFormats(Barcode.QR_CODE).build();
-        cameraSource = new CameraSource.Builder(this, barcodeDetector).setRequestedPreviewSize(640, 480).build();
+        cameraSource = new CameraSource.Builder(this, barcodeDetector).setAutoFocusEnabled(true).setRequestedPreviewSize(640,480).build();
 
         cameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override

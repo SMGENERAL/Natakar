@@ -25,14 +25,26 @@
         android:textStyle="bold"
         android:textColor="#ffffff" />
 
+    <ImageView
+    android:id="@+id/icon"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:contentDescription="TODO"
+    android:src="@drawable/launcher"
+        android:adjustViewBounds="true"
+        android:layout_below="@+id/lblNatakar"
+        android:layout_alignStart="@+id/lblNatakar"
+        android:layout_alignEnd="@+id/lblNatakar" />
+
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
-        android:layout_alignStart="@+id/lblNatakar"
+        android:background="@color/colorRdeca"
+        android:layout_below="@+id/lblStatus"
         android:layout_alignEnd="@+id/lblNatakar"
-        android:background="@color/colorRdeca" />
+        android:layout_alignStart="@+id/lblNatakar"
+        android:layout_marginTop="20dp" />
 
 
     <TextView
@@ -41,11 +53,11 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Niste prijavljeni."
         android:id="@+id/lblStatus"
-        android:layout_alignBottom="@+id/sign_in_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp"
         android:textSize="20dp"
         android:textAlignment="center"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:layout_below="@+id/icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
