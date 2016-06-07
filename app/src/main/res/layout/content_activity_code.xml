@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.zigabincl.com.natakar.Activity_code"
+    tools:context=".Activity_CodeScan"
     tools:showIn="@layout/layout_activity_code"
     android:background="@android:color/holo_blue_dark">
 

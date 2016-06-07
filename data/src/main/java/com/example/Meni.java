@@ -48,7 +48,7 @@ public class Meni {
         Ime = ime;
     }
 
-    public List<Hrana> getSeznamHrane() {
+    public ArrayList<Hrana> getSeznamHrane() {
         return SeznamHrane;
     }
 
@@ -57,7 +57,7 @@ public class Meni {
         izracunajCeno();
     }
 
-    public List<Pijaca> getSeznamPijace() {
+    public ArrayList<Pijaca> getSeznamPijace() {
         return SeznamPijace;
     }
 

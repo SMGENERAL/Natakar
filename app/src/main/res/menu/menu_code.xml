@@ -4,7 +4,13 @@
     tools:context=".Activity_2_Mize">
 
     <item
-        android:id="@+id/action_settings2"
+        android:id="@+id/btnMenuHistory"
+        android:title="Scan"
+        android:icon="@drawable/orderhistory"
+        android:orderInCategory="300"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/btnMenuScanCode"
         android:title="Scan"
         android:icon="@drawable/scancode"
         android:orderInCategory="300"

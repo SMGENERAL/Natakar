@@ -52,7 +52,7 @@
                 android:value="com.zigabincl.com.natakar.Activity_2_Mize" />
         </activity>
         <activity
-            android:name=".Activity_Lokacije"
+            android:name=".Activity_LokacijeMiz"
             android:label="@string/title_activity_activity__lokacije"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
@@ -61,14 +61,22 @@
                 android:value="com.zigabincl.com.natakar.Activity_2_Mize" />
         </activity>
         <activity
-            android:name=".Activity_code"
+            android:name=".Activity_CodeScan"
             android:label="@string/title_activity_activity_code"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.zigabincl.com.natakar.Activity_2_Mize"
-            />
+                android:value="com.zigabincl.com.natakar.Activity_2_Mize" />
+        </activity>
+        <activity
+            android:name=".Activity_History"
+            android:label="@string/title_activity_activity__history"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zigabincl.com.natakar.Activity_2_Mize" />
         </activity>
     </application>
 

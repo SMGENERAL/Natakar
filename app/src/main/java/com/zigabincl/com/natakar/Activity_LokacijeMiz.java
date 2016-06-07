@@ -6,15 +6,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-
-public class Activity_Lokacije extends AppCompatActivity {
+public class Activity_LokacijeMiz extends AppCompatActivity {
     public Podatki app;
-    private MizeLokacije mizeLokacije;
+    private CustomView_LokacijeMiz mizeLokacije;
     private int positionMiza;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +20,7 @@ public class Activity_Lokacije extends AppCompatActivity {
         setSupportActionBar(toolbar);
         app = (Podatki) getApplication();
 
-        mizeLokacije = (MizeLokacije)findViewById(R.id.Platno);
+        mizeLokacije = (CustomView_LokacijeMiz)findViewById(R.id.Platno);
 
         //back gumb
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

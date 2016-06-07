@@ -27,7 +27,7 @@ import java.io.IOException;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class Activity_code extends AppCompatActivity {
+public class Activity_CodeScan extends AppCompatActivity {
     private SurfaceView cameraView;
     private TextView barcodeID;
     private TextView barcodeDATA;

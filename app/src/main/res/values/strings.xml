@@ -12,4 +12,5 @@
     <string name="delete_narocilo">Izbrisi</string>
     <string name="title_activity_activity__lokacije">Lokacije miz</string>
     <string name="title_activity_activity_code">Skener Narocil</string>
+    <string name="title_activity_activity__history">Zgodovina Narocil</string>
 </resources>

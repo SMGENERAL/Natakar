@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by SPACE MARINE GENERAL on 29.4.2016.
  */
-public class Miza {
+public class Miza{
     private String ime;
     private ArrayList<Meni> SeznamMenijev;
     private Double SkupnaCena;
@@ -39,12 +39,17 @@ public class Miza {
         this.Id=0;
     }
 
-    public Miza(Miza druga) {
-        this.ime = druga.getIme();
-        this.SeznamMenijev=druga.getSeznamMenijev();
-        this.SkupnaCena=druga.getSkupnaCena();
-        this.Lokacija=druga.getLokacija();
-        this.Id=druga.getId();
+    public Miza vrniMizo() {
+        Miza tmp = new Miza();
+        tmp.ime=this.getIme();
+        tmp.SeznamMenijev=new ArrayList<Meni>();
+        for (int i = 0; i < this.getSeznamMenijev().size(); i++) {
+            tmp.getSeznamMenijev().add(this.getSeznamMenijev().get(i));
+        }
+        tmp.SkupnaCena=this.getSkupnaCena();
+        tmp.Lokacija=this.getLokacija();
+        tmp.Id=this.getId();
+        return tmp;
     }
 
     public void izracunajSkupnoCeno() {

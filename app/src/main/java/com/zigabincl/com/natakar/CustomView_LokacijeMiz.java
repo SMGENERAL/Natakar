@@ -24,7 +24,7 @@ import java.util.ArrayList;
 /**
  * Created by SPACE MARINE GENERAL on 31.5.2016.
  */
-public class MizeLokacije extends View {
+public class CustomView_LokacijeMiz extends View {
     private int startX;
     private int stopX;
     private int startY;
@@ -35,15 +35,15 @@ public class MizeLokacije extends View {
     int kVisina;
     public boolean editMode;
 
-    public MizeLokacije(Context context) {
+    public CustomView_LokacijeMiz(Context context) {
         super(context);
     }
 
-    public MizeLokacije(Context context, AttributeSet attrs) {
+    public CustomView_LokacijeMiz(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public MizeLokacije(Context context, AttributeSet ats, int defaultStyle) {
+    public CustomView_LokacijeMiz(Context context, AttributeSet ats, int defaultStyle) {
         super(context, ats, defaultStyle);
     }
 

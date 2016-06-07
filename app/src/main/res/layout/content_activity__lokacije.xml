@@ -5,7 +5,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.zigabincl.com.natakar.Activity_Lokacije"
+    tools:context=".Activity_LokacijeMiz"
     tools:showIn="@layout/layout_activity__lokacije"
     android:background="@android:color/holo_blue_dark"
     android:id="@+id/layoutPrikaz">
@@ -16,7 +16,7 @@
             android:id="@+id/PlatnoOzadje"
             android:background="@color/MojaSiva"
             android:layout_margin="6dp">
-                <com.zigabincl.com.natakar.MizeLokacije
+                <com.zigabincl.com.natakar.CustomView_LokacijeMiz
                     android:layout_width="fill_parent"
                     android:layout_height="380dp"
                     android:id="@+id/Platno"

@@ -1,18 +1,13 @@
 package com.zigabincl.com.natakar;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -20,10 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.DataAll;
-import com.example.Hrana;
-import com.example.Miza;
-
-import java.util.ArrayList;
 
 /**
  * Created by SPACE MARINE GENERAL on 3.4.2016.
@@ -33,9 +24,6 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
     private DataAll mDataset;
     Activity ac;
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     public class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView txtNaslov;
@@ -44,7 +32,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         public TextView txtMeniji;
         public RelativeLayout elementVrste;
         public ImageView iv;
-        public MizeLokacije mizeLokacije;
+        public CustomView_LokacijeMiz mizeLokacije;
 
         public ViewHolder(View v) {
             super(v);
@@ -54,7 +42,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
             txtNarocilo = (TextView) v.findViewById(R.id.txtHranaNarocilo);
             elementVrste = (RelativeLayout) v.findViewById(R.id.elementVrste);
             //iv = (ImageView)v.findViewById(R.id.icon);
-            mizeLokacije = (MizeLokacije)v.findViewById(R.id.Platno);
+            mizeLokacije = (CustomView_LokacijeMiz)v.findViewById(R.id.Platno);
         }
     }
     public AdapterMize(DataAll myDataset, Activity ac) {
@@ -117,7 +105,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         holder.mizeLokacije.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent drugoOkno = new Intent(ac, Activity_Lokacije.class);
+                Intent drugoOkno = new Intent(ac, Activity_LokacijeMiz.class);
                 drugoOkno.putExtra("POSITION_MIZA",positionMiza);
                 ac.startActivity(drugoOkno);
             }
@@ -147,7 +135,7 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
                                 public void onClick(DialogInterface dialog, int which) {
                                     //natisni račun(mizo dodaj v zgodovino)
                                     mDataset.getSeznamVsehMiz().get(positionMiza).setId(mDataset.getIDnavrsti());
-                                    mDataset.getSeznamZgodovina().add(mDataset.getSeznamVsehMiz().get(positionMiza));
+                                    mDataset.getSeznamZgodovina().add(mDataset.getSeznamVsehMiz().get(positionMiza).vrniMizo());
                                     mDataset.inc();
                                     //sprazne mizo
                                     mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().clear();
@@ -178,12 +166,10 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
                             .make(v, "Izbrali ste prazno mizo.", Snackbar.LENGTH_LONG);
                     snackbar.show();
                 }
-
                 return true;
             }
         });
     }
-
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
