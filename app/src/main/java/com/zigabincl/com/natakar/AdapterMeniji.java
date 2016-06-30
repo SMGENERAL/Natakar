@@ -135,7 +135,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 for (int i = 0; i <mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().size() ; i++) {
                     if(mDataset.getSeznamVsehMenijev().get(positionMeni).getIme()==mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getIme())
                     {
-                        if(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()<20)
+                        if(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()<40)
                         {
                             mDataset.change();
                             mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).inc();
@@ -144,7 +144,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                         }
                         else
                         {
-                            Snackbar.make(ac.findViewById(holder.elementVrste.getId()), "MAX. 20x", Snackbar.LENGTH_LONG).show();
+                            Snackbar.make(ac.findViewById(holder.elementVrste.getId()), "MAX. 40x", Snackbar.LENGTH_LONG).show();
                         }
                     }
                 }
@@ -182,10 +182,15 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                     mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(false);
                     holder.elementVrste.setBackgroundColor(Color.rgb(221,221,221)); //siva
                     mDataset.change();
-                  //  mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(positionMeni).setKolicina(1);
                     holder.btnPlus.setEnabled(false);
                     holder.btnMinus.setEnabled(false);
-                    mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().remove(mDataset.getSeznamVsehMenijev().get(positionMeni));
+                    //mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().remove(mDataset.getSeznamVsehMenijev().get(positionMeni));
+                    for (int i = 0; i < mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().size(); i++) {
+                        if(mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getIme()==mDataset.getSeznamVsehMenijev().get(positionMeni).getIme())
+                        {
+                            mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().remove(i);
+                        }
+                    }
                 }
                 else
                 {
@@ -194,7 +199,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                     mDataset.change();
                     holder.btnPlus.setEnabled(true);
                     holder.btnMinus.setEnabled(true);
-                    mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().add(mDataset.getSeznamVsehMenijev().get(positionMeni));
+                    mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().add(mDataset.getSeznamVsehMenijev().get(positionMeni).vrniMeni());
                 }
             }
         });

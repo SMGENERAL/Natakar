@@ -67,7 +67,11 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, final int positionMiza) {
         holder.txtNaslov.setText(mDataset.getSeznamVsehMiz().get(positionMiza).getIme());
         holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSkupnaCena())+" €");
-        final int velikost=mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().size();
+        int skupnaKolicina=0;
+        for (int i = 0; i < mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().size(); i++) {
+            skupnaKolicina+=mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina();
+        }
+        final int velikost=skupnaKolicina;
         holder.txtNarocilo.setText("N: "+velikost);
         if (velikost>0)
         {

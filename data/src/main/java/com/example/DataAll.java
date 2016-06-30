@@ -10,19 +10,23 @@ import java.util.ListIterator;
 public class DataAll {
    transient public boolean ch;
     private int IDnavrsti;
+    private String slikaProfilaLink;
     private ArrayList<Miza> seznamVsehMiz;
     private ArrayList<Meni> seznamVsehMenijev;
     private ArrayList<Hrana> seznamVseHrane;
     private ArrayList<Pijaca> seznamVsehPijac;
     private ArrayList<Miza> seznamZgodovina;
-public void change(){
+
+    public void change(){
     ch=true;
 }
     public void saved(){
         ch=false;
     }
+
     public DataAll() {
         ch=false;
+        this.slikaProfilaLink="";
         this.seznamVsehMiz=new ArrayList<Miza>();
         this.seznamVsehMenijev=new ArrayList<Meni>();
         this.seznamVseHrane=new ArrayList<Hrana>();
@@ -33,6 +37,7 @@ public void change(){
 
     public DataAll(ArrayList<Miza> seznamVsehMiz, ArrayList<Meni> seznamVsehMenijev, ArrayList<Hrana> seznamVseHrane, ArrayList<Pijaca> seznamVsehPijac) {
         ch=false;
+        this.slikaProfilaLink="";
         this.seznamVsehMiz = seznamVsehMiz;
         this.seznamVsehMenijev = seznamVsehMenijev;
         this.seznamVseHrane = seznamVseHrane;
@@ -240,5 +245,13 @@ public void change(){
     }
     public void inc() {
         this.IDnavrsti++;
+    }
+
+    public String getSlikaProfilaLink() {
+        return slikaProfilaLink;
+    }
+
+    public void setSlikaProfilaLink(String slikaProfilaLink) {
+        this.slikaProfilaLink = slikaProfilaLink;
     }
 }

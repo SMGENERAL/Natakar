@@ -40,6 +40,23 @@ public class Meni {
         this.Kolicina=1;
     }
 
+    public Meni vrniMeni() {
+        Meni tmp = new Meni();
+        tmp.Ime=this.getIme();
+        tmp.SeznamHrane=new ArrayList<Hrana>();
+        for (int i = 0; i < this.getSeznamHrane().size(); i++) {
+            tmp.getSeznamHrane().add(this.getSeznamHrane().get(i));
+        }
+        tmp.SeznamPijace=new ArrayList<Pijaca>();
+        for (int i = 0; i < this.getSeznamPijace().size(); i++) {
+            tmp.getSeznamPijace().add(this.getSeznamPijace().get(i));
+        }
+        tmp.Cena=this.getCena();
+        tmp.Oznacen=this.isOznacen();
+        tmp.Kolicina=this.getKolicina();
+        return tmp;
+    }
+
     public String getIme() {
         return Ime;
     }

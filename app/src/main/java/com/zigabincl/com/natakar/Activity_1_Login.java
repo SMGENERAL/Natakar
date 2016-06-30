@@ -2,11 +2,18 @@ package com.zigabincl.com.natakar;
 
 import android.*;
 import android.Manifest;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -16,6 +23,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
@@ -26,6 +35,13 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
+
+import java.io.InputStream;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class Activity_1_Login extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks,
@@ -38,7 +54,10 @@ public class Activity_1_Login extends AppCompatActivity implements
     private ProgressDialog mProgressDialog;
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
+    private ProgressBar loading;
+    //private ImageView profilePicture;
     private boolean forceLogout;
+    public Activity ac;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +73,9 @@ public class Activity_1_Login extends AppCompatActivity implements
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         }
-
+        this.ac=this;
+        //profilePicture=(ImageView)  findViewById(R.id.slikaProfila);
+        loading = (ProgressBar) findViewById(R.id.progressBar);
         mStatusTextView = (TextView) findViewById(R.id.lblStatus);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
 
@@ -116,6 +137,7 @@ public class Activity_1_Login extends AppCompatActivity implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_in_button:
+                loading.setVisibility(View.VISIBLE);
                 signIn();
                 break;
             /*
@@ -152,14 +174,57 @@ public class Activity_1_Login extends AppCompatActivity implements
             GoogleSignInAccount acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
             vsiPodatki.loginStatusText="Prijavljeni kot: "+acct.getDisplayName();
-            if (!forceLogout) {
-                Intent druga = new Intent(this, Activity_2_Mize.class);
-                startActivity(druga);
-            }
 
+            Log.d(TAG,acct.getPhotoUrl().toString());
+            final DownloadImageTask naloga=(DownloadImageTask)new DownloadImageTask((ImageView) findViewById(R.id.slikaProfila)).execute(acct.getPhotoUrl().toString());
+
+            if (!forceLogout) {
+
+                //Declare the timer
+                final Timer t = new Timer();
+                t.scheduleAtFixedRate(new TimerTask() {
+                    @Override
+                    public void run() {
+                        //Called each time
+                        if (naloga.getStatus() == AsyncTask.Status.FINISHED) {
+                            t.cancel();
+                            Intent druga = new Intent(ac, Activity_2_Mize.class);
+                            startActivity(druga);
+                        }
+                    }
+                },
+                //Set how long before to start calling the TimerTask (in milliseconds)
+                        0,
+                //Set the amount of time between each execution (in milliseconds)
+                        1000);
+            }
         } else {
             // Signed out, show unauthenticated UI.
             mStatusTextView.setText("NAPAKA. Preverite omrezje.");
+        }
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("ERROR: Picture, ", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
         }
     }
 
