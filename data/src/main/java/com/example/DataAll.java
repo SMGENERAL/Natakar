@@ -10,7 +10,7 @@ import java.util.ListIterator;
 public class DataAll {
    transient public boolean ch;
     private int IDnavrsti;
-    private String slikaProfilaLink;
+    private Uporabnik uporabnik;
     private ArrayList<Miza> seznamVsehMiz;
     private ArrayList<Meni> seznamVsehMenijev;
     private ArrayList<Hrana> seznamVseHrane;
@@ -26,7 +26,7 @@ public class DataAll {
 
     public DataAll() {
         ch=false;
-        this.slikaProfilaLink="";
+        this.uporabnik=new Uporabnik();
         this.seznamVsehMiz=new ArrayList<Miza>();
         this.seznamVsehMenijev=new ArrayList<Meni>();
         this.seznamVseHrane=new ArrayList<Hrana>();
@@ -37,7 +37,7 @@ public class DataAll {
 
     public DataAll(ArrayList<Miza> seznamVsehMiz, ArrayList<Meni> seznamVsehMenijev, ArrayList<Hrana> seznamVseHrane, ArrayList<Pijaca> seznamVsehPijac) {
         ch=false;
-        this.slikaProfilaLink="";
+        this.uporabnik=new Uporabnik();
         this.seznamVsehMiz = seznamVsehMiz;
         this.seznamVsehMenijev = seznamVsehMenijev;
         this.seznamVseHrane = seznamVseHrane;
@@ -231,27 +231,29 @@ public class DataAll {
         this.IDnavrsti = IDnavrsti;
     }
 
-    @Override
-    public String toString() {
-        return "DataAll{" +
-                "ch=" + ch +
-                ", IDnavrsti=" + IDnavrsti +
-                ", seznamVsehMiz=" + seznamVsehMiz +
-                ", seznamVsehMenijev=" + seznamVsehMenijev +
-                ", seznamVseHrane=" + seznamVseHrane +
-                ", seznamVsehPijac=" + seznamVsehPijac +
-                ", seznamZgodovina=" + seznamZgodovina +
-                '}';
-    }
     public void inc() {
         this.IDnavrsti++;
     }
 
-    public String getSlikaProfilaLink() {
-        return slikaProfilaLink;
+    public Uporabnik getUporabnik() {
+        return uporabnik;
     }
 
-    public void setSlikaProfilaLink(String slikaProfilaLink) {
-        this.slikaProfilaLink = slikaProfilaLink;
+    public void setUporabnik(Uporabnik uporabnik) {
+        this.uporabnik = uporabnik;
+    }
+
+    @Override
+    public String toString() {
+        return "DataAll{" +
+                "IDnavrsti=" + IDnavrsti +
+                ", uporabnik=" + uporabnik +
+                ", ch=" + ch +
+                ", seznamVsehMiz=" + seznamVsehMiz +
+                ", seznamVsehMenijev=" + seznamVsehMenijev +
+                ", seznamZgodovina=" + seznamZgodovina +
+                ", seznamVseHrane=" + seznamVseHrane +
+                ", seznamVsehPijac=" + seznamVsehPijac +
+                '}';
     }
 }

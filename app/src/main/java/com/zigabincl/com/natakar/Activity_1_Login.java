@@ -23,6 +23,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -55,9 +60,10 @@ public class Activity_1_Login extends AppCompatActivity implements
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
     private ProgressBar loading;
-    //private ImageView profilePicture;
+    private ImageView profilePicture;
     private boolean forceLogout;
     public Activity ac;
+    public boolean slikaOK;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,13 +80,37 @@ public class Activity_1_Login extends AppCompatActivity implements
             ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         }
         this.ac=this;
-        //profilePicture=(ImageView)  findViewById(R.id.slikaProfila);
+        this.slikaOK=false;
+        profilePicture=(ImageView)  findViewById(R.id.slikaProfila);
         loading = (ProgressBar) findViewById(R.id.progressBar);
         mStatusTextView = (TextView) findViewById(R.id.lblStatus);
         findViewById(R.id.sign_in_button).setOnClickListener(this);
 
         vsiPodatki = (Podatki) getApplication();
         vsiPodatki.save();
+
+        if(vsiPodatki.getAll().getUporabnik().getId()!="")
+        {
+            final DownloadImageTask naloga=(DownloadImageTask)new DownloadImageTask((ImageView) findViewById(R.id.slikaProfila)).execute(vsiPodatki.getAll().getUporabnik().getSlikaUrl());
+
+            //Declare the timer
+            final Timer t = new Timer();
+            t.scheduleAtFixedRate(new TimerTask() {
+                                      @Override
+                                      public void run() {
+                                          //Called each time
+                                          if (naloga.getStatus() == AsyncTask.Status.FINISHED) {
+                                              t.cancel();
+                                              slikaOK=true;
+                                          }
+                                      }
+                                  },
+                    //Set how long before to start calling the TimerTask (in milliseconds)
+                    0,
+                    //Set the amount of time between each execution (in milliseconds)
+                    100);
+        }
+
         mStatusTextView.setText(vsiPodatki.loginStatusText);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -138,6 +168,7 @@ public class Activity_1_Login extends AppCompatActivity implements
         switch (v.getId()) {
             case R.id.sign_in_button:
                 loading.setVisibility(View.VISIBLE);
+                mStatusTextView.setText("Loading...");
                 signIn();
                 break;
             /*
@@ -173,35 +204,57 @@ public class Activity_1_Login extends AppCompatActivity implements
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            vsiPodatki.loginStatusText="Prijavljeni kot: "+acct.getDisplayName();
+            vsiPodatki.loginStatusText = "Prijavljeni kot: " + acct.getDisplayName();
 
-            Log.d(TAG,acct.getPhotoUrl().toString());
-            final DownloadImageTask naloga=(DownloadImageTask)new DownloadImageTask((ImageView) findViewById(R.id.slikaProfila)).execute(acct.getPhotoUrl().toString());
-
-            if (!forceLogout) {
-
-                //Declare the timer
-                final Timer t = new Timer();
-                t.scheduleAtFixedRate(new TimerTask() {
-                    @Override
-                    public void run() {
-                        //Called each time
-                        if (naloga.getStatus() == AsyncTask.Status.FINISHED) {
-                            t.cancel();
-                            Intent druga = new Intent(ac, Activity_2_Mize.class);
-                            startActivity(druga);
-                        }
-                    }
-                },
-                //Set how long before to start calling the TimerTask (in milliseconds)
-                        0,
-                //Set the amount of time between each execution (in milliseconds)
-                        1000);
+            if (vsiPodatki.getAll().getUporabnik().getId() != acct.getId())   //ni shranjen
+            {
+                vsiPodatki.getAll().getUporabnik().setId(acct.getId());
+                vsiPodatki.getAll().getUporabnik().setIme(acct.getDisplayName());
+                vsiPodatki.getAll().getUporabnik().setEmail(acct.getEmail());
+                vsiPodatki.getAll().getUporabnik().setSlikaUrl(acct.getPhotoUrl().toString());
+                vsiPodatki.save();
             }
-        } else {
-            // Signed out, show unauthenticated UI.
-            mStatusTextView.setText("NAPAKA. Preverite omrezje.");
+
+
+            if (slikaOK == false) {
+                final DownloadImageTask naloga = (DownloadImageTask) new DownloadImageTask((ImageView) findViewById(R.id.slikaProfila)).execute(acct.getPhotoUrl().toString());
+
+                if (!forceLogout) {
+
+                    //Declare the timer
+                    final Timer t = new Timer();
+                    t.scheduleAtFixedRate(new TimerTask() {
+                                              @Override
+                                              public void run() {
+                                                  //Called each time
+                                                  if (naloga.getStatus() == AsyncTask.Status.FINISHED) {
+                                                      t.cancel();
+                                                      Intent druga = new Intent(ac, Activity_2_Mize.class);
+                                                      startActivity(druga);
+                                                  }
+                                              }
+                                          },
+                            //Set how long before to start calling the TimerTask (in milliseconds)
+                            0,
+                            //Set the amount of time between each execution (in milliseconds)
+                            100);
+                } else {
+                    // Signed out, show unauthenticated UI.
+                    mStatusTextView.setText("NAPAKA. Preverite omrezje.");
+                }
+            }
+            else
+            {
+                if (!forceLogout) {
+                    Intent druga = new Intent(ac, Activity_2_Mize.class);
+                    startActivity(druga);
+                } else {
+                    // Signed out, show unauthenticated UI.
+                    mStatusTextView.setText("NAPAKA. Preverite omrezje.");
+                }
+            }
         }
+
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -285,6 +338,13 @@ public class Activity_1_Login extends AppCompatActivity implements
                     @Override
                     public void onResult(Status status) {
                         // [START_EXCLUDE]
+                        vsiPodatki.getAll().getUporabnik().setId("");
+                        vsiPodatki.getAll().getUporabnik().setIme("");
+                        vsiPodatki.getAll().getUporabnik().setEmail("");
+                        vsiPodatki.getAll().getUporabnik().setSlikaUrl(null);
+                        vsiPodatki.save();
+                        profilePicture.setImageDrawable(ac.getDrawable(R.drawable.userguest));
+                        slikaOK=false;
                         vsiPodatki.loginStatusText="Odjavljeni.";
                         mStatusTextView.setText("Odjavljeni.");
                         // [END_EXCLUDE]

@@ -12,7 +12,6 @@
     tools:context=".Activity_1_Login"
     tools:showIn="@layout/layout_activity_1"
     android:background="@android:color/holo_blue_dark">
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +56,6 @@
                 android:contentDescription="TODO"
                 android:src="@drawable/userguest"
                 android:adjustViewBounds="true"
-                android:layout_below="@+id/icon"
                 android:layout_centerHorizontal="true" />
         </RelativeLayout>
     </RelativeLayout>
@@ -78,15 +76,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Niste prijavljeni."
         android:id="@+id/lblStatus"
         android:textSize="20dp"
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:layout_below="@+id/plastOkvir"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:text="status" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
