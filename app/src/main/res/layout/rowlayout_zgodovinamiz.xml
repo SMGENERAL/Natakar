@@ -3,18 +3,26 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/holo_blue_dark"
+    android:background="@color/mojaPrimaryDark"
     android:id="@+id/elementOzadje">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/MojaSiva"
-        android:id="@+id/elementVrste"
+        android:background="@color/mojaProzorna"
+        android:id="@+id/elementVrsteOzadje"
         android:layout_marginBottom="6dp"
         android:layout_marginRight="4dp"
         android:layout_marginLeft="4dp">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mojaPrimaryLight"
+            android:id="@+id/elementVrste"
+            android:layout_margin="2dp">
 
 
 
@@ -22,7 +30,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:id="@+id/elementPlatnoOzadje"
-            android:background="@color/MojaSiva">
+            android:background="@color/mojaProzorna">
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
@@ -49,7 +57,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="MIZA1"
             android:id="@+id/txtNaslov"
-            android:textColor="#000000"
+            android:textColor="@android:color/black"
             android:layout_marginLeft="10dp"
             android:layout_below="@+id/txtID"
             android:layout_toEndOf="@+id/elementPlatnoOzadje" />
@@ -60,8 +68,8 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="0 €"
             android:id="@+id/txtCena"
-            android:textColor="#ff0000"
-            android:background="#ffffff"
+            android:textColor="@android:color/black"
+            android:background="@color/mojaPrimary"
             android:layout_alignTop="@+id/txtID"
             android:layout_alignParentEnd="true" />
 
@@ -71,10 +79,10 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="N: 0"
             android:id="@+id/txtHranaNarocilo"
-            android:textColor="#000000"
+            android:textColor="@android:color/black"
             android:layout_below="@+id/txtCena"
             android:layout_alignParentEnd="true"
-            android:background="#ffffff"
+            android:background="@color/mojaPrimary"
             android:layout_toEndOf="@+id/txtMeniji" />
 
         <TextView
@@ -95,11 +103,10 @@
             android:text="ID: 1234"
             android:id="@+id/txtID"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="@android:color/black"
             android:layout_marginLeft="10dp"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/elementPlatnoOzadje"
-            android:layout_marginTop="2dp" />
-
+            android:layout_toEndOf="@+id/elementPlatnoOzadje" />
+        </RelativeLayout>
     </RelativeLayout>
 </RelativeLayout>

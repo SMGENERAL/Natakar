@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity_CodeScan"
     tools:showIn="@layout/layout_activity_code"
-    android:background="@android:color/holo_blue_dark">
+    android:background="@color/mojaPrimaryDark">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,8 +28,8 @@
             android:id="@+id/code_id"
             android:textSize="20sp"
             android:text="Iscem..."
-            android:background="@color/MojaSiva"
-            android:textColor="#ff0000"
+            android:background="@color/mojaPrimaryLight"
+            android:textColor="@android:color/black"
             android:layout_marginTop="2dp"
             android:layout_below="@+id/camera_view"
             android:layout_centerHorizontal="true" />
@@ -39,8 +39,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/code_data"
             android:textSize="20sp"
-            android:background="@color/MojaSiva"
-            android:textColor="#000000"
+            android:background="@color/mojaPrimaryLight"
+            android:textColor="@android:color/black"
             android:layout_below="@+id/code_id"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"

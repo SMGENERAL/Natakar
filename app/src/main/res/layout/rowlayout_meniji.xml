@@ -3,26 +3,36 @@
     android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@android:color/holo_blue_dark"
+    android:background="@color/mojaPrimaryDark"
     android:id="@+id/elementOzadje">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/MojaSiva"
-        android:id="@+id/elementVrste"
+        android:background="@color/mojaProzorna"
+        android:id="@+id/elementVrsteOzadje"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="6dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginLeft="8dp">
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="4dp">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mojaPrimaryLight"
+            android:id="@+id/elementVrste"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="2dp">
 
         <RelativeLayout
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:id="@+id/iconOzadje"
-            android:background="@color/MojaSiva">
+            android:background="@color/mojaProzorna">
             <ImageView
                 android:id="@+id/icon"
                 android:layout_width="fill_parent"
@@ -46,11 +56,10 @@
             android:text="imeMenija"
             android:id="@+id/txtNaslov"
             android:textStyle="bold"
-            android:textColor="#000000"
+            android:textColor="@android:color/black"
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/iconOzadje"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="2dp" />
+            android:layout_marginLeft="10dp" />
 
 
         <TextView
@@ -59,7 +68,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="hrana"
             android:id="@+id/txtSeznamhrane"
-            android:textColor="#000000"
+            android:textColor="@android:color/black"
             android:maxWidth="40dp"
             android:layout_below="@+id/txtNaslov"
             android:layout_alignStart="@+id/txtNaslov"
@@ -72,10 +81,10 @@
             android:text="-"
             android:id="@+id/btnMinus"
             android:textStyle="bold"
-            android:background="#ffffff"
             android:layout_alignTop="@+id/btnPlus"
             android:layout_toStartOf="@+id/btnPlus"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="5dp"
+            android:background="@android:color/white" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -84,11 +93,11 @@
             android:text="+"
             android:id="@+id/btnPlus"
             android:textStyle="bold"
-            android:background="#ffffff"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp" />
+            android:layout_marginRight="5dp"
+            android:background="@android:color/white" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -96,7 +105,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="pijaca"
             android:id="@+id/txtSeznamPijace"
-            android:textColor="#000000"
+            android:textColor="@android:color/black"
             android:maxWidth="40dp"
             android:layout_below="@+id/txtSeznamhrane"
             android:layout_alignStart="@+id/txtSeznamhrane"
@@ -112,12 +121,11 @@
             android:textStyle="bold"
             android:textColor="@android:color/black"
             android:textSize="18dp"
-            android:background="#ffffff"
+            android:background="@color/mojaPrimary"
             android:layout_alignWithParentIfMissing="false"
             android:layout_below="@+id/txtCena"
             android:layout_alignStart="@+id/txtCena"
-            android:layout_alignEnd="@+id/txtCena"
-            android:layout_marginBottom="2dp" />
+            android:layout_alignEnd="@+id/txtCena" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -125,12 +133,11 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="0 €"
             android:id="@+id/txtCena"
-            android:background="@android:color/white"
-            android:textColor="#ff0000"
-            android:layout_marginLeft="2dp"
+            android:background="@color/mojaPrimary"
+            android:textColor="@android:color/black"
             android:layout_below="@+id/iconOzadje"
             android:layout_alignParentStart="true" />
 
+        </RelativeLayout>
     </RelativeLayout>
-
 </RelativeLayout>

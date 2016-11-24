@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -102,12 +103,11 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
         mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(false);
         holder.btnPlus.setEnabled(false);
         holder.btnMinus.setEnabled(false);
-        holder.elementVrste.setBackgroundColor(Color.rgb(221,221,221)); //siva
+        holder.elementVrste.setBackgroundColor(ContextCompat.getColor(ac, R.color.mojaPrimaryLight)); //modra
         for (int i = 0; i <mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().size() ; i++) {
             if(mDataset.getSeznamVsehMenijev().get(positionMeni).getIme()==mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getIme())
             {
-                holder.elementVrste.setBackgroundColor(Color.rgb(120,255,120)); //zelena
-
+                holder.elementVrste.setBackgroundColor(ContextCompat.getColor(ac, R.color.mojaAccent)); //zelena
                 mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(true);
                 holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getCena())+" €");
                 holder.txtKolicina.setText("K: "+mDataset.getSeznamVsehMiz().get(positionMiza).getSeznamMenijev().get(i).getKolicina()+"x");
@@ -123,7 +123,10 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
         holder.iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(ac.findViewById(holder.elementVrste.getId()), "Pojdi na podrobnosti menija "+(positionMeni+1), Snackbar.LENGTH_LONG).show();
+                Intent drugoOkno = new Intent(ac, Activity_4_Hrana_Pijaca.class);
+                drugoOkno.putExtra("POSITION_MIZA",positionMiza);
+                drugoOkno.putExtra("POSITION_MENI",positionMeni);
+                ac.startActivity(drugoOkno);
             }
         });
         //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -180,7 +183,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 if(mDataset.getSeznamVsehMenijev().get(positionMeni).isOznacen())
                 {
                     mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(false);
-                    holder.elementVrste.setBackgroundColor(Color.rgb(221,221,221)); //siva
+                    holder.elementVrste.setBackgroundColor(ContextCompat.getColor(ac, R.color.mojaPrimaryLight)); //modra
                     mDataset.change();
                     holder.btnPlus.setEnabled(false);
                     holder.btnMinus.setEnabled(false);
@@ -195,7 +198,7 @@ public class AdapterMeniji extends RecyclerView.Adapter<AdapterMeniji.ViewHolder
                 else
                 {
                     mDataset.getSeznamVsehMenijev().get(positionMeni).setOznacen(true);
-                    holder.elementVrste.setBackgroundColor(Color.rgb(120,255,120)); //zelena
+                    holder.elementVrste.setBackgroundColor(ContextCompat.getColor(ac, R.color.mojaAccent)); //zelena
                     mDataset.change();
                     holder.btnPlus.setEnabled(true);
                     holder.btnMinus.setEnabled(true);

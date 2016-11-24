@@ -8,5 +8,12 @@
     <color name="light_Gray">#c8c8c8</color>
     <color name="mojaLightBlue">#4fc3f7</color>
     <color name="mojaLightRed">#ffa0a0</color>
-    <color name="MojaSiva">#dddddd</color>
+    <color name="MojaSiva">#c8c8c8</color>
+    <color name="mojaBelaProzorna">#78ffffff</color>
+    <color name="mojaTemnoModra">#0188b4</color>
+    <color name="mojaProzorna">#50000000</color>
+    <color name="mojaPrimary">#2196f3</color>
+    <color name="mojaPrimaryLight">#90caf9</color>
+    <color name="mojaPrimaryDark">#1565c0</color>
+    <color name="mojaAccent">#81c784</color>
 </resources>

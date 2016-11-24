@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/mojaPrimaryDark"
+    android:id="@+id/elementOzadje">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mojaProzorna"
+        android:id="@+id/elementVrsteOzadje"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="6dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="4dp">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mojaPrimaryLight"
+            android:id="@+id/elementVrste"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="2dp">
+
+        <RelativeLayout
+            android:id="@+id/iconOzadje"
+            android:background="@color/mojaProzorna"
+            android:layout_width="60dp"
+            android:layout_height="60dp">
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:contentDescription="TODO"
+                android:src="@drawable/food"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:adjustViewBounds="true"
+                android:background="@android:color/white"
+                android:layout_margin="2dp" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="imehrane/pijace"
+            android:id="@+id/txtNaslov"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/iconOzadje"
+            android:layout_marginLeft="10dp" />
+
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="0 €"
+            android:id="@+id/txtCena"
+            android:background="@color/mojaPrimary"
+            android:textColor="@android:color/black"
+                android:layout_alignTop="@+id/txtNaslov"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

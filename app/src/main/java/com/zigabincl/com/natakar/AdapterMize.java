@@ -1,10 +1,12 @@
 package com.zigabincl.com.natakar;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,7 +43,6 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
             txtMeniji = (TextView) v.findViewById(R.id.txtMeniji);
             txtNarocilo = (TextView) v.findViewById(R.id.txtHranaNarocilo);
             elementVrste = (RelativeLayout) v.findViewById(R.id.elementVrste);
-            //iv = (ImageView)v.findViewById(R.id.icon);
             mizeLokacije = (CustomView_LokacijeMiz)v.findViewById(R.id.Platno);
         }
     }
@@ -75,11 +76,11 @@ public class AdapterMize extends RecyclerView.Adapter<AdapterMize.ViewHolder> {
         holder.txtNarocilo.setText("N: "+velikost);
         if (velikost>0)
         {
-            holder.elementVrste.setBackgroundColor(Color.rgb(221,221,221)); //siva
+            holder.elementVrste.setBackgroundColor(ContextCompat.getColor(ac, R.color.mojaPrimaryLight)); //modra
         }
         else
         {
-            holder.elementVrste.setBackgroundColor(Color.rgb(120,255,120)); //zelena
+            holder.elementVrste.setBackgroundColor(ContextCompat.getColor(ac, R.color.mojaAccent)); //zelena
         }
 
         String menijiText="";

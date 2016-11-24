@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -70,7 +71,7 @@ public class AdapterZgodovina extends RecyclerView.Adapter<AdapterZgodovina.View
         int velikost=mDataset.getSeznamZgodovina().get(positionMiza).getSeznamMenijev().size();
         holder.txtNarocilo.setText("N: "+velikost);
         holder.txtID.setText("ID: "+mDataset.getSeznamZgodovina().get(positionMiza).getId());
-        holder.elementVrste.setBackgroundColor(Color.rgb(221,221,221)); //siva
+        holder.elementVrste.setBackgroundColor(ContextCompat.getColor(ac, R.color.mojaPrimaryLight)); //modra
 
         String menijiText="";
         for (int i = 0; i < mDataset.getSeznamZgodovina().get(positionMiza).getSeznamMenijev().size(); i++) {

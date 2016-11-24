@@ -7,7 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity_3_Meniji"
     tools:showIn="@layout/layout_activity_3"
-    android:background="@android:color/holo_blue_dark">
+    android:background="@color/mojaPrimaryDark">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listElementov"

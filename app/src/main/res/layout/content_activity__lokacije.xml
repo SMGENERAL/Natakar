@@ -7,20 +7,20 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity_LokacijeMiz"
     tools:showIn="@layout/layout_activity__lokacije"
-    android:background="@android:color/holo_blue_dark"
+    android:background="@color/mojaPrimaryDark"
     android:id="@+id/layoutPrikaz">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/PlatnoOzadje"
-            android:background="@color/MojaSiva"
+            android:background="@color/mojaProzorna"
             android:layout_margin="6dp">
                 <com.zigabincl.com.natakar.CustomView_LokacijeMiz
                     android:layout_width="fill_parent"
                     android:layout_height="380dp"
                     android:id="@+id/Platno"
-                    android:background="@color/MojaSiva"
+                    android:background="@color/mojaPrimaryLight"
                     android:layout_alignParentTop="true"
                     android:layout_margin="4dp" />
         </RelativeLayout>
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/layoutLegenda"
-            android:background="@color/MojaSiva"
+            android:background="@color/mojaPrimaryLight"
             android:layout_below="@+id/PlatnoOzadje"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="6dp">
@@ -45,15 +45,16 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
-                    android:textColor="#000000"
+                    android:textColor="@android:color/black"
                     android:textStyle="bold" />
+
 
                 <TextView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/textView"
-                    android:background="#ff0000"
+                    android:background="@drawable/borderred"
                     android:layout_below="@+id/lblInfo"
                     android:layout_alignStart="@+id/lblInfo"
                     android:layout_marginTop="5dp" />
@@ -63,7 +64,7 @@
                     android:layout_height="15dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/textView2"
-                    android:background="#000000"
+                    android:background="@drawable/borderdarkblue"
                     android:layout_below="@+id/textView"
                     android:layout_alignStart="@+id/textView"
                     android:layout_marginTop="10dp" />
@@ -73,7 +74,7 @@
                     android:layout_height="15dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:id="@+id/textView3"
-                    android:background="#ffffff"
+                    android:background="@drawable/borderlightblue"
                     android:layout_below="@+id/textView2"
                     android:layout_alignStart="@+id/textView2"
                     android:layout_marginTop="10dp" />
@@ -88,7 +89,7 @@
                     android:layout_toEndOf="@+id/textView"
                     android:textSize="12dp"
                     android:textIsSelectable="false"
-                    android:textColor="#000000"
+                    android:textColor="@android:color/black"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp" />
 
@@ -100,7 +101,7 @@
                     android:id="@+id/textView5"
                     android:textSize="12dp"
                     android:textIsSelectable="false"
-                    android:textColor="#000000"
+                    android:textColor="@android:color/black"
                     android:layout_marginLeft="5dp"
                     android:layout_alignTop="@+id/textView2"
                     android:layout_toEndOf="@+id/textView2"
@@ -114,7 +115,7 @@
                     android:id="@+id/textView6"
                     android:textSize="12dp"
                     android:textIsSelectable="false"
-                    android:textColor="#000000"
+                    android:textColor="@android:color/black"
                     android:layout_marginLeft="5dp"
                     android:layout_alignTop="@+id/textView3"
                     android:layout_toEndOf="@+id/textView3"

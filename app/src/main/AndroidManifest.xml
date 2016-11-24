@@ -78,6 +78,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zigabincl.com.natakar.Activity_2_Mize" />
         </activity>
+        <activity
+            android:name=".Activity_4_Hrana_Pijaca"
+            android:label="@string/title_activity_4__hrana__pijaca"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zigabincl.com.natakar.Activity_3_Meniji" />
+        </activity>
     </application>
 
 </manifest>

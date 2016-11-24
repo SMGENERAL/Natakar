@@ -13,6 +13,7 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.provider.ContactsContract;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -104,11 +105,11 @@ public class CustomView_LokacijeMiz extends View {
             for (int j = 0; j < 10; j++) {
                 if(poljeLokacij[k]==0) //prazen prostor
                 {
-                    barvaFill.setColor(Color.WHITE);
+                    barvaFill.setColor(ContextCompat.getColor(getContext(), R.color.mojaPrimaryLight));
                 }
                 else if(poljeLokacij[k]==1) //neka druga miza
                 {
-                    barvaFill.setColor(Color.BLACK);
+                    barvaFill.setColor(ContextCompat.getColor(getContext(), R.color.mojaPrimaryDark));
                 }
                 else if(poljeLokacij[k]==2) //izbrana miza
                 {
