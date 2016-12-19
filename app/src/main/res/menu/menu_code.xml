@@ -5,14 +5,20 @@
 
     <item
         android:id="@+id/btnMenuHistory"
-        android:title="Scan"
+        android:title="History"
         android:icon="@drawable/orderhistory"
-        android:orderInCategory="300"
-        app:showAsAction="ifRoom" />
+        android:orderInCategory="100"
+        app:showAsAction="always" />
     <item
         android:id="@+id/btnMenuScanCode"
         android:title="Scan"
         android:icon="@drawable/scancode"
-        android:orderInCategory="300"
-        app:showAsAction="ifRoom" />
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/btnMenuWeka"
+        android:title="Weka"
+        android:icon="@drawable/weka"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
 </menu>

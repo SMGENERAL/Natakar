@@ -134,7 +134,7 @@ public class AdapterHranaPijaca extends RecyclerView.Adapter<AdapterHranaPijaca.
             holder.txtCena.setText(String.format("%.2f", mDataset.getSeznamVsehPijac().get(indexPvsi).getCena())+" €");
             holder.iv.setImageDrawable(this.ac.getDrawable(R.drawable.drink)); //slika
 
-            
+
 
             indexPvsi++;
         }

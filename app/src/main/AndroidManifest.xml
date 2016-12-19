@@ -4,6 +4,7 @@
     package="com.zigabincl.com.natakar">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -85,6 +86,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zigabincl.com.natakar.Activity_3_Meniji" />
+        </activity>
+        <activity
+            android:name=".Activity_Weka"
+            android:label="@string/title_activity__weka"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.zigabincl.com.natakar.Activity_2_Mize" />
         </activity>
     </application>
 

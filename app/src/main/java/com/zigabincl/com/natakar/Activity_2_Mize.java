@@ -72,6 +72,11 @@ public class Activity_2_Mize extends AppCompatActivity {
             startActivity(drugoOkno);
             return true;
         }
+        if (id == R.id.btnMenuWeka) {
+            Intent drugoOkno = new Intent(this, Activity_Weka.class);
+            startActivity(drugoOkno);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
