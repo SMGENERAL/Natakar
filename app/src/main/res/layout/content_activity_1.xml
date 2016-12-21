@@ -101,4 +101,23 @@
         android:indeterminateOnly="false"
         android:visibility="invisible" />
 
+
+    <RelativeLayout
+        android:id="@+id/plastvideo"
+        android:layout_width="match_parent"
+        android:background="@color/mojaProzorna"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lblNatakar"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/plastOkvir">
+
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/videoIntro"
+        android:visibility="visible"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="4dp" />
+    </RelativeLayout>
 </RelativeLayout>

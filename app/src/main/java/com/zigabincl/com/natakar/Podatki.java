@@ -26,7 +26,7 @@ public class Podatki extends Application {
     public String loginStatusText;
     @Override
     public void onCreate() {
-        loginStatusText="Prijavite se";
+        loginStatusText="";
         super.onCreate();
         if (!load())                                                                              //TODO da se podatki vedno osvežijo. popravi to za fiksne podatke, da jih lahko spreminjaš.
             vsiPodatki = DataAll.getScenarijData(); //testni prvi podatki

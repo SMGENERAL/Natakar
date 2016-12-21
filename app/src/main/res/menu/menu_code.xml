@@ -7,18 +7,18 @@
         android:id="@+id/btnMenuHistory"
         android:title="History"
         android:icon="@drawable/orderhistory"
-        android:orderInCategory="100"
+        android:orderInCategory="1"
         app:showAsAction="always" />
     <item
         android:id="@+id/btnMenuScanCode"
         android:title="Scan"
         android:icon="@drawable/scancode"
-        android:orderInCategory="100"
+        android:orderInCategory="2"
         app:showAsAction="always" />
     <item
         android:id="@+id/btnMenuWeka"
         android:title="Weka"
         android:icon="@drawable/weka"
-        android:orderInCategory="100"
+        android:orderInCategory="3"
         app:showAsAction="always" />
 </menu>

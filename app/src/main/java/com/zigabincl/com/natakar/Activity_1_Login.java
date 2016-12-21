@@ -11,10 +11,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -24,14 +27,18 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LayoutAnimationController;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -65,6 +72,7 @@ public class Activity_1_Login extends AppCompatActivity implements
     private boolean forceLogout;
     public Activity ac;
     public boolean slikaOK;
+    public VideoView videoIntro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +80,8 @@ public class Activity_1_Login extends AppCompatActivity implements
         setContentView(R.layout.layout_activity_1);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        this.ac=this;
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
         //dovoljenja
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -83,7 +93,32 @@ public class Activity_1_Login extends AppCompatActivity implements
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},1);
         }
-        this.ac=this;
+
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        //video
+        //Snackbar.make(ac.findViewById(R.id.plastvideo),"Loading...",Snackbar.LENGTH_LONG).show();
+        videoIntro = (VideoView) findViewById(R.id.videoIntro);
+        String uriPath = "android.resource://"+getPackageName()+"/"+R.raw.animation;
+        Uri uri = Uri.parse(uriPath);
+        videoIntro.setVideoURI(uri);
+        videoIntro.start();
+
+        videoIntro.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                ac.findViewById(R.id.plastvideo).setVisibility(View.GONE);
+            }
+        });
+        videoIntro.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mp, int what, int extra) {
+                ac.findViewById(R.id.plastvideo).setVisibility(View.GONE);
+                return false;
+            }
+        });
+
+        //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
         this.slikaOK=false;
         profilePicture=(ImageView)  findViewById(R.id.slikaProfila);
         loading = (ProgressBar) findViewById(R.id.progressBar);
@@ -210,8 +245,8 @@ public class Activity_1_Login extends AppCompatActivity implements
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            vsiPodatki.loginStatusText = "Prijavljeni kot: " + acct.getDisplayName();
+            mStatusTextView.setText(acct.getDisplayName());
+            vsiPodatki.loginStatusText = acct.getDisplayName();
 
             if (vsiPodatki.getAll().getUporabnik().getId() != acct.getId())   //ni shranjen
             {
@@ -247,7 +282,7 @@ public class Activity_1_Login extends AppCompatActivity implements
                             100);
                 } else {
                     // Signed out, show unauthenticated UI.
-                    mStatusTextView.setText("NAPAKA. Preverite omrezje.");
+                    mStatusTextView.setText("Napaka: Preverite omrežje.");
                 }
             }
             else
@@ -257,7 +292,7 @@ public class Activity_1_Login extends AppCompatActivity implements
                     startActivity(druga);
                 } else {
                     // Signed out, show unauthenticated UI.
-                    mStatusTextView.setText("NAPAKA. Preverite omrezje.");
+                    mStatusTextView.setText("Napaka: Preverite omrežje.");
                 }
             }
         }
@@ -352,8 +387,8 @@ public class Activity_1_Login extends AppCompatActivity implements
                         vsiPodatki.save();
                         profilePicture.setImageDrawable(ac.getDrawable(R.drawable.userguest));
                         slikaOK=false;
-                        vsiPodatki.loginStatusText="Odjavljeni.";
-                        mStatusTextView.setText("Odjavljeni.");
+                        vsiPodatki.loginStatusText="";
+                        mStatusTextView.setText("");
                         // [END_EXCLUDE]
                     }
                 });
