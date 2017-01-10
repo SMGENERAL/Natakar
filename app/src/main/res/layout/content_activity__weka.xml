@@ -5,37 +5,33 @@
     android:id="@+id/layoutPrikaz"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.zigabincl.com.natakar.Activity_Weka"
     tools:showIn="@layout/layout_activity__weka"
     android:background="@color/mojaPrimaryDark">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/layoutLegenda"
-        android:background="@color/mojaPrimaryLight"
-        android:layout_below="@+id/PlatnoOzadje"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentEnd="true">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Rezultati bodo prikazani tukaj..."
+            android:text="Natančnost: 0%"
             android:id="@+id/lblInfo"
-            android:layout_below="@+id/Platno"
-            android:layout_alignParentStart="true"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            android:layout_margin="5dp"
-            android:textSize="12sp" />
+            android:background="@color/mojaPrimaryLight"
+            android:textStyle="normal|bold"
+            android:gravity="center" />
 
+        <android.support.v7.widget.RecyclerView
+        android:id="@+id/listElementov"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/lblInfo"
+            android:layout_marginTop="5dp" />
 
     </RelativeLayout>
 </RelativeLayout>

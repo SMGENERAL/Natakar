@@ -41,7 +41,6 @@ public class Activity_3_Meniji extends AppCompatActivity {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.listElementov);
         mRecyclerView.setHasFixedSize(true);
-
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);

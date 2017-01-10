@@ -1,7 +1,6 @@
 package com.example;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by SPACE MARINE GENERAL on 19.3.2016.
