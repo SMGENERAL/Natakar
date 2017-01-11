@@ -61,12 +61,14 @@ public class Activity_1_Login extends AppCompatActivity implements
         View.OnClickListener {
 
     private Podatki vsiPodatki = new Podatki();
+    private static final double Version = 1.01;
     public static final String LOGOUT = "LOGOUT";
     private static final String TAG = "Activity_1_Login";
     private static final int RC_SIGN_IN = 9001;
     private ProgressDialog mProgressDialog;
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
+    private TextView txtVersion;
     private ProgressBar loading;
     private ImageView profilePicture;
     private boolean forceLogout;
@@ -118,7 +120,8 @@ public class Activity_1_Login extends AppCompatActivity implements
         });
 
         //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+        txtVersion = (TextView) findViewById(R.id.txtVersion);
+        txtVersion.setText("V:"+Version);
         this.slikaOK=false;
         profilePicture=(ImageView)  findViewById(R.id.slikaProfila);
         loading = (ProgressBar) findViewById(R.id.progressBar);

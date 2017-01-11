@@ -62,7 +62,6 @@ public class Activity_Weka extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         lblInfo = (TextView) findViewById(R.id.lblInfo);
-
         //__________________________________________________________________________________________________________________________________________________
         //TESTNI PODATKI
         //PREBERI PODATKE IZ ARFF DATOTEKE
@@ -166,16 +165,12 @@ public class Activity_Weka extends AppCompatActivity {
         Instances dataReal = null;
         try {
             dataReal = new Instances(reader);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
         // setting class attribute
-        dataReal.setClassIndex(dataTest.numAttributes() - 1);
+        dataReal.setClassIndex(dataReal.numAttributes() - 1);
         //filter
         try
         {
@@ -186,7 +181,6 @@ public class Activity_Weka extends AppCompatActivity {
             options2[3] = "-1.0";
             options2[4] = "-R";
             options2[5] = "first-last";
-            //options2[6] = "-unset-class-temporarily";
             Discretize mojFilter = new Discretize();
             mojFilter.setOptions(options2);
             mojFilter.setInputFormat(dataReal);
@@ -202,8 +196,6 @@ public class Activity_Weka extends AppCompatActivity {
             //nastavi in sortiraj dataNew
             for (int i = 0; i < dataNew.size(); i++)
             {
-                //Log.d("index:"+i,dataNew.get(i).toString());
-                //Log.d("index:"+i,dataNew.get(i).stringValue(dataNew.get(i).classAttribute()));
                 seznamMenijevWeka.get(i).setPopularnost(dataNew.get(i).stringValue(dataNew.get(i).classAttribute()));
             }
 
@@ -254,11 +246,6 @@ public class Activity_Weka extends AppCompatActivity {
                 seznamUrejeni.add(seznam1.get(i).vrniMeniWeka());
             }
 
-            //prikaži urejene menije
-//            for (int i = 0; i < seznamUrejeni.size(); i++) {
-//                Log.d("index:"+i,seznamUrejeni.get(i).toString());
-//            }
-
             mRecyclerView = (RecyclerView) findViewById(R.id.listElementov);
             mRecyclerView.setHasFixedSize(true);
             // use a linear layout manager
@@ -267,11 +254,6 @@ public class Activity_Weka extends AppCompatActivity {
             // specify an adapter (see also next example)
             mAdapter = new AdapterWeka(this, seznamUrejeni);
             mRecyclerView.setAdapter(mAdapter);
-
-
-
-
-
 
         } catch (Exception e) {
             e.printStackTrace();
